@@ -10,15 +10,22 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-Website and tutorial developed by Lena Gieseke, 2025–26.  
+<br />
+With this tutorial, we build a personal portfolio website from scratch using Next.js, React, TypeScript, Tailwind CSS v4, and MDX. The result is a six-page static site:  
+
+* [workshop-ss26-webdev-portfolio.onrender.com](https://workshop-ss26-webdev-portfolio.onrender.com/)
+* The same stack, applied to a real portfolio: [lenagieseke.com](https://www.lenagieseke.com/)
+
+Files & Data:
+
+* [Image files for the exercises](../../code/data/img.zip)
+* [Final source code](../../code/final/workshop_ss26_webdev_portfolio/)
+
+---
   
-> Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted throughout. Claude was instructed to draw from the official documentation of all technologies used. Those documentations should be considered reference material throughout.
+> Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted. Claude was instructed to draw from the official documentation of all technologies used — those should be considered reference material throughout.
 
-
-The template page, we are implementing: [https://workshop-ss26-webdev-portfolio.onrender.com/](https://workshop-ss26-webdev-portfolio.onrender.com/) . 
-The same setup, individualized for my personal webpage: [www.lenagieseke.com/](https://www.lenagieseke.com/)
-
-
+---
 
 * [Tutorial - A Portfolio Page](#tutorial---a-portfolio-page)
     * [What We Are Building](#what-we-are-building)
