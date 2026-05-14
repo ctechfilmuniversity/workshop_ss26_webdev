@@ -33,12 +33,12 @@ There are several approaches to routing:
 Every folder inside `app/` that contains a file named `page.tsx` becomes a URL route:
 
 ```
-app/page.tsx                       → /
-app/about/page.tsx                 → /about
-app/(routes)/projects/page.tsx     → /projects
-app/(routes)/projects/[slug]/page.tsx → /projects/generative-art
-                                              /projects/shader-studies
-                                              (any value)
+app/page.tsx                                → /
+app/about/page.tsx                          → /about
+app/(routes)/projects/page.tsx              → /projects
+app/(routes)/projects/[slug]/page.tsx       → /projects/project1
+                                              /projects/project2
+                                              ...
 ```
 
 There is no router configuration file. The file system is the router.
