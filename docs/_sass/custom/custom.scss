@@ -18,7 +18,8 @@ pre.highlight {
   background: #2d2a2e !important;
   color: #fcfcfa;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 // ── Base text ─────────────────────────────────────────────────────────────────
@@ -65,7 +66,8 @@ pre.highlight {
 
 // ── Function / method names ───────────────────────────────────────────────────
 .highlight .nf,
-.highlight .fm  { color: #a9dc76; }
+.highlight .fm,
+.highlight .fc  { color: #a9dc76; }               // #a9dc76 = Monokai Pro green
 
 // ── Class names ───────────────────────────────────────────────────────────────
 .highlight .nc  { color: #78dce8; }
