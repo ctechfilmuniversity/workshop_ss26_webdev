@@ -7,7 +7,22 @@
 
 // ── Site title ────────────────────────────────────────────────────────────────
 .site-title {
-  font-size: 0.85rem !important;
+  font-size: 0.9em !important;
+  color: #3a3a3a;
+  background: #ebebeb;
+  border-radius: 4px;
+  padding: 0.1em 0.1em;
+  
+}
+
+// ── Tables ────────────────────────────────────────────────────────────────────
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #aaa !important;
+  padding: 0.3rem 0.6rem !important;
 }
 
 // ── Code block chrome ─────────────────────────────────────────────────────────
@@ -121,7 +136,7 @@ pre.highlight {
   color: #3a3a3a;
   background: #ebebeb;
   border-radius: 4px;
-  padding: 0.1em 0.4em;
+  padding: 0.1em 0.1em;
   font-size: 0.9em;
   // font-family is inherited from the <code> element — no override needed
 }
