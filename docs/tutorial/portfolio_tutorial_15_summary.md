@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -114,7 +114,7 @@ Replace every `[bracket]` placeholder before publishing:
 
 ---
 
-## Following
+### Next
 
 * [16. Build and Deploy](portfolio_tutorial_16_deploy)
 * [17. References and Links](portfolio_tutorial_17_references)

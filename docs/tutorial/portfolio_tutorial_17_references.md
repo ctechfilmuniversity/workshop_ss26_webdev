@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)

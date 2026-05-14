@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -138,7 +138,7 @@ Add your portrait photo at `public/img/portrait.jpg`. The `public/` folder is se
 
 ---
 
-## Following
+### Next
 
 * [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
 * [11. Impressum](portfolio_tutorial_11_impressum)

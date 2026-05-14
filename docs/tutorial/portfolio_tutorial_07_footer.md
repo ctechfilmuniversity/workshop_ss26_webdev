@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -63,10 +63,7 @@ The middle line uses Tailwind utility classes directly — `text-gray-500 text-x
 
 ---
 
-
----
-
-## Following
+### Next
 
 * [8. The Home Page](portfolio_tutorial_08_home)
 * [9. The About Page – Overview](portfolio_tutorial_09_about_overview)

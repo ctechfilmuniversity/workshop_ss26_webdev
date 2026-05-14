@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -280,11 +280,7 @@ The home page is now complete. Later we could replace the HeroImage with a shade
 
 ---
 
-
----
-
-## Following
-
+### Next
 * [9. The About Page – Overview](portfolio_tutorial_09_about_overview)
 * [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
 * [11. Impressum](portfolio_tutorial_11_impressum)

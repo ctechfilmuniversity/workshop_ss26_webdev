@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -117,10 +117,7 @@ export default Contact;
 
 ---
 
-
----
-
-## Following
+### Next
 
 * [13. Projects](portfolio_tutorial_13_projects)
 * [14. Fonts](portfolio_tutorial_14_fonts)

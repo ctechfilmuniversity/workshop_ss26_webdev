@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -560,10 +560,9 @@ import ButtonEmail from "./ButtonEmail";
 
 The header now shows a responsive nav — inline row on desktop, a dropdown on mobile — and a "Say hi!" button that opens the visitor's email client.
 
-
 ---
 
-## Following
+### Next
 
 * [7. Footer](portfolio_tutorial_07_footer)
 * [8. The Home Page](portfolio_tutorial_08_home)

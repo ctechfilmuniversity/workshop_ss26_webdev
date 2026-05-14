@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -293,7 +293,7 @@ The site should now display a styled sticky header and footer. The navigation is
 
 ---
 
-## Following
+### Next
 
 * [6. Navigation](portfolio_tutorial_06_navigation)
 * [7. Footer](portfolio_tutorial_07_footer)

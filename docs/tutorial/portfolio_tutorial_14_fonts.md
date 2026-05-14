@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -184,7 +184,7 @@ Everything that uses `--font-headers` updates automatically.
 
 ---
 
-## Following
+### Next
 
 * [15. Summary](portfolio_tutorial_15_summary)
 * [16. Build and Deploy](portfolio_tutorial_16_deploy)

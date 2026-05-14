@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -679,10 +679,7 @@ If the build fails, Next.js prints the file and line number. Common issues at th
 
 ---
 
-
----
-
-## Following
+### Next
 
 * [14. Fonts](portfolio_tutorial_14_fonts)
 * [15. Summary](portfolio_tutorial_15_summary)

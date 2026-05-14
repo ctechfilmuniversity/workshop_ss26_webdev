@@ -10,7 +10,7 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
-## Previous
+### Previous
 
 * [1. Tech Stack](portfolio_tutorial_01_stack)
 * [2. Project Setup](portfolio_tutorial_02_setup)
@@ -83,10 +83,7 @@ Create a small screenshot of your email address (approximately 200–250 px wide
 
 ---
 
-
----
-
-## Following
+### Next
 
 * [12. Contact](portfolio_tutorial_12_contact)
 * [13. Projects](portfolio_tutorial_13_projects)
