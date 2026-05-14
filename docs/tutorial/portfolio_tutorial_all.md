@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Tutorial - All Steps
+title: All Steps in One
+parent: Tutorial
 nav_order: 10
 has_children: false
 ---

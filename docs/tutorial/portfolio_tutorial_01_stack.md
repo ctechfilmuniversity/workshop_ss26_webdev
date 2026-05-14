@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Tutorial - 1. Tech Stack
-nav_order: 3
+title: Tech Stack
+parent: Tutorial
+nav_order: 1
 has_children: false
 ---
 
