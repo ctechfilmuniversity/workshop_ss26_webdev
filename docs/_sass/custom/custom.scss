@@ -1,0 +1,113 @@
+// _sass/custom/custom.scss
+// Monokai Pro syntax highlighting for Just the Docs (Rouge tokenizer).
+// This file is auto-imported by JTD — do not rename it.
+//
+// Token reference: https://rouge.jneen.net/token-index
+// Monokai Pro palette: https://monokai.pro
+
+// ── Code block chrome ─────────────────────────────────────────────────────────
+.highlight,
+div.highlighter-rouge {
+  background: #2d2a2e !important;
+  border-radius: 6px;
+  border: 1px solid #403e41;
+}
+
+.highlight pre,
+pre.highlight {
+  background: #2d2a2e !important;
+  color: #fcfcfa;
+  margin: 0;
+}
+
+// ── Base text ─────────────────────────────────────────────────────────────────
+.highlight .text,
+.highlight .n  { color: #fcfcfa; }                 // name / plain text
+
+// ── Comments ──────────────────────────────────────────────────────────────────
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs,
+.highlight .cp,
+.highlight .cpf { color: #727072; font-style: italic; }
+
+// ── Keywords ──────────────────────────────────────────────────────────────────
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr { color: #ff6188; }
+
+.highlight .kt  { color: #78dce8; }                // keyword type
+
+// ── Strings ───────────────────────────────────────────────────────────────────
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .ss  { color: #ffd866; }
+
+// ── Numbers ───────────────────────────────────────────────────────────────────
+.highlight .m,
+.highlight .mi,
+.highlight .mf,
+.highlight .mh,
+.highlight .mo,
+.highlight .il  { color: #ab9df2; }
+
+// ── Function / method names ───────────────────────────────────────────────────
+.highlight .nf,
+.highlight .fm  { color: #a9dc76; }
+
+// ── Class names ───────────────────────────────────────────────────────────────
+.highlight .nc  { color: #78dce8; }
+
+// ── Built-ins ─────────────────────────────────────────────────────────────────
+.highlight .nb,
+.highlight .bp  { color: #78dce8; }
+
+// ── Attribute / tag names ─────────────────────────────────────────────────────
+.highlight .na  { color: #fc9867; }
+.highlight .nt  { color: #ff6188; }                // HTML/XML tag name
+
+// ── Variables ─────────────────────────────────────────────────────────────────
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi  { color: #fcfcfa; }
+
+// ── Operators ─────────────────────────────────────────────────────────────────
+.highlight .o,
+.highlight .ow  { color: #ff6188; }
+
+// ── Punctuation ───────────────────────────────────────────────────────────────
+.highlight .p,
+.highlight .pi  { color: #fcfcfa; }
+
+// ── Error token (visible so you know something went wrong) ───────────────────
+.highlight .err { color: #ff6188; background: none; }
+
+// ── Diffs ─────────────────────────────────────────────────────────────────────
+.highlight .gi   { color: #a9dc76; }               // inserted line
+.highlight .gd   { color: #ff6188; }               // deleted line
+.highlight .gi .x{ color: #ffd866; }               // inserted change
+.highlight .gd .x{ color: #fc9867; }               // deleted change
+.highlight .gu   { color: #78dce8; font-weight: bold; } // diff header
+
+// ── Line numbers (when enabled with {% highlight ... linenos %}) ──────────────
+.highlight .gl,
+.highlight .ln  { color: #5b595c; user-select: none; margin-right: 12px; }
+
+// ── Inline code (backtick spans) ─────────────────────────────────────────────
+// Overrides JTD's default which can look pale on the dark bg
+code.language-plaintext {
+  color: #ffd866;
+  background: #221f22;
+}
