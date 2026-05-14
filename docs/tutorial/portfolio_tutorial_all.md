@@ -1,26 +1,28 @@
 # A Portfolio with Next.js
 
-The template page, we are implementing:
-The same setup, individualized for my webpage: [www.lenagieseke.com/](https://www.lenagieseke.com/)
-
 Website and tutorial developed by Lena Gieseke, 2025–26.  
   
 > Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted throughout. Claude was instructed to draw from the official documentation of all technologies used. Those documentations should be considered reference material throughout.
 
 
+The template page, we are implementing: [https://portfolio-01-t2.onrender.com/](https://portfolio-01-t2.onrender.com/)
+The same setup, individualized for my webpage: [www.lenagieseke.com/](https://www.lenagieseke.com/)
+
+
+
 * [A Portfolio with Next.js](#a-portfolio-with-nextjs)
     * [What We Are Building](#what-we-are-building)
-        * [Static vs. Dynamic Websites](#static-vs-dynamic-websites)
         * [What You Will Learn](#what-you-will-learn)
         * [Prerequisites](#prerequisites)
     * [1. Tech Stack](#1-tech-stack)
-        * [1.1 npm and Node.js](#11-npm-and-nodejs)
-        * [1.2 Next.js](#12-nextjs)
-        * [1.3 React](#13-react)
-        * [1.4 TypeScript](#14-typescript)
-            * [1.4.1  Custom Types For Component Props](#141--custom-types-for-component-props)
-        * [1.5 Tailwind CSS](#15-tailwind-css)
-        * [1.6 MDX](#16-mdx)
+        * [1.1 Static vs. Dynamic Websites](#11-static-vs-dynamic-websites)
+        * [1.2 npm and Node.js](#12-npm-and-nodejs)
+        * [1.3 Next.js](#13-nextjs)
+        * [1.4 React](#14-react)
+        * [1.5 TypeScript](#15-typescript)
+            * [1.5.1  Custom Types For Component Props](#151--custom-types-for-component-props)
+        * [1.6 Tailwind CSS](#16-tailwind-css)
+        * [1.7 MDX](#17-mdx)
     * [2. Project Setup](#2-project-setup)
         * [2.1 Installing Node.js](#21-installing-nodejs)
         * [2.2 Creating the Project](#22-creating-the-project)
@@ -125,17 +127,6 @@ Website and tutorial developed by Lena Gieseke, 2025–26.
 
 The goal is a personal portfolio website with six pages: home (animated shader hero), about (collapsible CV), projects listing with category filtering, individual project detail pages, a contact page, and a legal impressum.
 
-### Static vs. Dynamic Websites
-
-There are two broad categories of website:
-
-**Dynamic sites** run a server that generates the page HTML on every request. The server might query a database, check who is logged in, or personalise the content for each visitor. Examples: social networks, online shops, news feeds. Dynamic sites require an always-running server process.
-
-**Static sites** generate all HTML at build time — once, ahead of any visitor arriving. The result is a folder of plain files (`.html`, `.css`, `.js`, images) that any file server can deliver. There is no computation at request time. Static sites are fast, cheap to host, and have no server to maintain.
-
-This portfolio is a static site. `npm run build` compiles the entire site into an `out/` folder. That folder can be uploaded to GitHub Pages, Netlify, Vercel, or any file host — no backend required.
-
-The trade-off: static sites cannot show truly real-time or per-user content. For a portfolio that changes only when you rebuild and re-deploy, this trade-off is a good deal.
 
 ### What You Will Learn
 
@@ -155,7 +146,20 @@ You should be comfortable with basic HTML, CSS, and JavaScript fundamentals. You
 
 ## 1. Tech Stack
 
-### 1.1 npm and Node.js
+### 1.1 Static vs. Dynamic Websites
+
+There are two broad categories of website:
+
+**Dynamic sites** run a server that generates the page HTML on every request. The server might query a database, check who is logged in, or personalise the content for each visitor. Examples: social networks, online shops, news feeds. Dynamic sites require an always-running server process.
+
+**Static sites** generate all HTML at build time — once, ahead of any visitor arriving. The result is a folder of plain files (`.html`, `.css`, `.js`, images) that any file server can deliver. There is no computation at request time. Static sites are fast, cheap to host, and have no server to maintain.
+
+This portfolio is a static site. `npm run build` compiles the entire site into an `out/` folder. That folder can be uploaded to GitHub Pages, Netlify, Vercel, or any file host — no backend required.
+
+The trade-off: static sites cannot show truly real-time or per-user content. For a portfolio that changes only when you rebuild and re-deploy, this trade-off is a good deal.
+
+
+### 1.2 npm and Node.js
 
 JavaScript started as a browser language. **Node.js** brought it to the server and the command line. Everything in this project — the build tools, the development server, the package installer — runs on Node.js.
 
@@ -169,7 +173,7 @@ npm run dev             # start the development server
 npm run build           # compile the production site
 ```
 
-### 1.2 Next.js
+### 1.3 Next.js
 
 [Next.js](https://nextjs.org/) is a framework built on top of React. React describes how to build UI components; it says nothing about routing, build optimisation, or server rendering. Next.js adds all of that.
 
@@ -182,7 +186,7 @@ Key features this project uses:
 - **Static export** — one config option (`output: "export"`) compiles the whole site to static files.
 - **Turbopack** — the dev server uses a very fast Rust-based bundler. Production builds always use a separate optimising compiler.
 
-### 1.3 React
+### 1.4 React
 
 [React](https://react.dev/) is a library for building user interfaces out of **components**. A component is a JavaScript function that returns a description of what to show on screen.
 
@@ -227,7 +231,7 @@ React 19 introduced two kinds of components:
 
 The rule: add `"use client"` only when you actually need interactivity. Everything else stays as a server component.
 
-### 1.4 TypeScript
+### 1.5 TypeScript
 
 [TypeScript](https://www.typescriptlang.org/) is JavaScript with type annotations. You declare what type a variable, parameter, or function return value must be:
 
@@ -246,7 +250,7 @@ function greet(name: string): string {
 TypeScript is compiled away before shipping — the browser only ever sees plain JavaScript. The cost is a small amount of extra syntax; the benefit is that an entire class of bugs is caught before they reach users.
 
 
-#### 1.4.1  Custom Types For Component Props
+#### 1.5.1  Custom Types For Component Props
 
 In React, every component receives its inputs as a props object. TypeScript lets you define exactly what shape that object must have using a type declaration:
 
@@ -268,7 +272,7 @@ Now TypeScript knows that email must always be provided and must be a string. Pa
 
 You will see this pattern in some of the components in this project.
 
-### 1.5 Tailwind CSS
+### 1.6 Tailwind CSS
 
 [Tailwind CSS](https://tailwindcss.com/) is a **utility-first** CSS framework. "Utility-first" means: instead of writing custom CSS class names and then writing CSS rules for them, you apply small, single-purpose class names directly in your HTML. Each class does exactly one thing.
 
@@ -285,7 +289,7 @@ The benefit: you never leave your HTML file to style an element. The class names
 
 **Tailwind v4 (the version this project uses)** removed the `tailwind.config.ts` configuration file. The only setup required is one line in your CSS file and a PostCSS plugin. This is noted in the relevant section below.
 
-### 1.6 MDX
+### 1.7 MDX
 
 [MDX](https://mdxjs.com/) is a file format that combines Markdown with JSX. Plain Markdown is great for text content (headings, lists, paragraphs, links) but cannot include interactive React components. MDX adds that ability.
 
