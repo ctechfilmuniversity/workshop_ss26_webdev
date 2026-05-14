@@ -10,6 +10,22 @@ has_children: false
   
 # Tutorial - A Portfolio Page
 
+## Previous
+
+* [1. Tech Stack](portfolio_tutorial_01_stack)
+* [2. Project Setup](portfolio_tutorial_02_setup)
+* [3. Routing](portfolio_tutorial_03_routing)
+* [4. Header and Footer](portfolio_tutorial_04_header_footer)
+* [5. Tailwind CSS](portfolio_tutorial_05_tailwind)
+* [6. Navigation](portfolio_tutorial_06_navigation)
+* [7. Footer](portfolio_tutorial_07_footer)
+* [8. The Home Page](portfolio_tutorial_08_home)
+* [9. The About Page – Overview](portfolio_tutorial_09_about_overview)
+* [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
+* [11. Impressum](portfolio_tutorial_11_impressum)
+* [12. Contact](portfolio_tutorial_12_contact)
+
+
 ## 13. Projects
 
 The Projects section has three parts that work together:
@@ -662,4 +678,14 @@ If the build fails, Next.js prints the file and line number. Common issues at th
 
 
 ---
+
+
+---
+
+## Following
+
+* [14. Fonts](portfolio_tutorial_14_fonts)
+* [15. Summary](portfolio_tutorial_15_summary)
+* [16. Build and Deploy](portfolio_tutorial_16_deploy)
+* [17. References and Links](portfolio_tutorial_17_references)
 
