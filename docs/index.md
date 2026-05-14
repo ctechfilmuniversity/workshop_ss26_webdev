@@ -11,7 +11,7 @@ has_children: false
 [[The Oatmeal]](https://theoatmeal.com/comics/design_hell)
 
 
-In this workshop, we are developing a portfolio webpage with Next.js, React, TypeScript, Tailwind, and MDX. 
+In this workshop, we are developing a [personal portfolio website](https://workshop-ss26-webdev-portfolio.onrender.com/) with Next.js, React, TypeScript, Tailwind, and MDX. 
 
 
 

@@ -2,7 +2,7 @@
 layout: default
 title: All Steps in One
 parent: Tutorial
-nav_order: 10
+nav_order: 18
 has_children: false
 ---
 
