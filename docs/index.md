@@ -26,7 +26,7 @@ In this workshop, we are developing a portfolio webpage with Next.js, React, Typ
 - How to build a dynamic route, generating all pages at compile time
 
 As prerequisites, you should be comfortable with basic HTML, CSS, and JavaScript fundamentals. 
-
-## The Tutorial
-
-[Let's start...🤩]()
+  
+  
+  
+[Let's start...🤩](./tutorial/index.md)

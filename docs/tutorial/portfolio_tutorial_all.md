@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Tutorial
-nav_order: 2
+title: Tutorial - All Steps
+nav_order: 10
 has_children: false
 ---
 
