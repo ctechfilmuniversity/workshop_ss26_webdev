@@ -5,8 +5,8 @@ nav_order: 2
 has_children: false
 ---
 
-Lena Gieseke | l.gieseke@filmuniversitaet.de  
-
+#### Prof. Dr. Lena Gieseke | lena.gieseke@filmuniversitaet.de  
+  
 # Tutorial - A Portfolio Page
 
 Website and tutorial developed by Lena Gieseke, 2025–26.  

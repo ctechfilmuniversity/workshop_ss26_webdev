@@ -29,6 +29,4 @@ As prerequisites, you should be comfortable with basic HTML, CSS, and JavaScript
 
 ## The Tutorial
 
-All Image files:
-
-[Tutorial - All Steps on one Page](./tutorial/portfolio_tutorial_all.md)
+[Let's start...🤩]()
