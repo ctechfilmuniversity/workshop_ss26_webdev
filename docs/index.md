@@ -7,10 +7,12 @@ has_children: false
 
 # Welcome!
 
-In this workshop, we are developing a portfolio webpage with Next.js, React, TypeScript, Tailwind, and MDX. 
-
 ![theoatmeal_01](./img/theoatmeal_01.jpg)  
 [[The Oatmeal]](https://theoatmeal.com/comics/design_hell)
+
+
+In this workshop, we are developing a portfolio webpage with Next.js, React, TypeScript, Tailwind, and MDX. 
+
 
 
 ## What You Will Learn
@@ -22,7 +24,6 @@ In this workshop, we are developing a portfolio webpage with Next.js, React, Typ
 - How to use Tailwind CSS v4 as a design system
 - How to write rich content in MDX (Markdown with embedded React components)
 - How to build a dynamic route, generating all pages at compile time
-
 
 As prerequisites, you should be comfortable with basic HTML, CSS, and JavaScript fundamentals. 
 

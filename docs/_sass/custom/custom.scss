@@ -5,9 +5,23 @@
 // Token reference: https://rouge.jneen.net/token-index
 // Monokai Pro palette: https://monokai.pro
 
+// ── Sidebar width ─────────────────────────────────────────────────────────────
+$nav-width: 200px !default;
+
+.side-bar {
+  width: 200px !important;
+  min-width: 200px !important;
+}
+
+@media (min-width: 50rem) {
+  .main {
+    margin-left: 200px !important;
+  }
+}
+
 // ── Site title ────────────────────────────────────────────────────────────────
 .site-title {
-  font-size: 0.6em !important;
+  font-size: 0.8em !important;
 //   font-weight: bold !important;
 }
 

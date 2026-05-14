@@ -1,19 +1,27 @@
-# A Portfolio with Next.js
+---
+layout: default
+title: Tutorial
+nav_order: 2
+has_children: false
+---
+
+Lena Gieseke | l.gieseke@filmuniversitaet.de  
+
+# Tutorial - A Portfolio Page
 
 Website and tutorial developed by Lena Gieseke, 2025–26.  
   
 > Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted throughout. Claude was instructed to draw from the official documentation of all technologies used. Those documentations should be considered reference material throughout.
 
 
-The template page, we are implementing: [https://portfolio-01-t2.onrender.com/](https://portfolio-01-t2.onrender.com/)
-The same setup, individualized for my webpage: [www.lenagieseke.com/](https://www.lenagieseke.com/)
+The template page, we are implementing: [https://workshop-ss26-webdev-portfolio.onrender.com/](https://workshop-ss26-webdev-portfolio.onrender.com/) . 
+The same setup, individualized for my personal webpage: [www.lenagieseke.com/](https://www.lenagieseke.com/)
 
 
 
-* [A Portfolio with Next.js](#a-portfolio-with-nextjs)
+* [Tutorial - A Portfolio Page](#tutorial---a-portfolio-page)
     * [What We Are Building](#what-we-are-building)
         * [What You Will Learn](#what-you-will-learn)
-        * [Prerequisites](#prerequisites)
     * [1. Tech Stack](#1-tech-stack)
         * [1.1 Static vs. Dynamic Websites](#11-static-vs-dynamic-websites)
         * [1.2 npm and Node.js](#12-npm-and-nodejs)
@@ -125,22 +133,20 @@ The same setup, individualized for my webpage: [www.lenagieseke.com/](https://ww
 
 ## What We Are Building
 
-The goal is a personal portfolio website with six pages: home (animated shader hero), about (collapsible CV), projects listing with category filtering, individual project detail pages, a contact page, and a legal impressum.
+The goal is a [personal portfolio website](https://workshop-ss26-webdev-portfolio.onrender.com/) with six pages: home (animated shader hero), about (collapsible CV), projects listing with category filtering, individual project detail pages, a contact page, and a legal impressum.
 
 
 ### What You Will Learn
 
+- How to build and compose reusable React components with props
 - How Next.js App Router structures a multi-page site using the file system
 - How to separate server-rendered and client-side-interactive code
 - How to write typed data and components in TypeScript
 - How to use Tailwind CSS v4 as a design system
 - How to write rich content in MDX (Markdown with embedded React components)
-- How to build a dynamic route (`/projects/[slug]`) generating all pages at compile time
-- How WebGL 2 works and how to write a fragment shader in GLSL
+- How to build a dynamic route, generating all pages at compile time
 
-### Prerequisites
-
-You should be comfortable with basic HTML, CSS, and JavaScript fundamentals. You do not need to know React, TypeScript, or Next.js — each is introduced from scratch when it first appears.
+As prerequisites, you should be comfortable with basic HTML, CSS, and JavaScript fundamentals. 
 
 ---
 
