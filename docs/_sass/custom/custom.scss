@@ -18,8 +18,8 @@ pre.highlight {
   background: #2d2a2e !important;
   color: #fcfcfa;
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 1.2rem;
+  line-height: 1.2;
 }
 
 // ── Base text ─────────────────────────────────────────────────────────────────
@@ -109,8 +109,13 @@ pre.highlight {
 .highlight .ln  { color: #5b595c; user-select: none; margin-right: 12px; }
 
 // ── Inline code (backtick spans) ─────────────────────────────────────────────
-// Overrides JTD's default which can look pale on the dark bg
-code.language-plaintext {
-  color: #ffd866;
-  background: #221f22;
+// Targets inline <code> outside of fenced/highlighted blocks
+:not(.highlight) > code,
+:not(pre) > code {
+  color: #3a3a3a;
+  background: #ebebeb;
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.9em;
+  // font-family is inherited from the <code> element — no override needed
 }
