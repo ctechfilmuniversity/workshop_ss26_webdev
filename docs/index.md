@@ -11,8 +11,9 @@ has_children: false
 [[The Oatmeal]](https://theoatmeal.com/comics/design_hell)
 
 
-In this workshop, we are developing a [personal portfolio website](https://workshop-ss26-webdev-portfolio.onrender.com/) with Next.js, React, TypeScript, Tailwind, and MDX. 
-
+In this workshop, we are developing a [personal portfolio website](https://workshop-ss26-webdev-portfolio.onrender.com/) with Next.js, React, TypeScript, Tailwind, and MDX.  
+  
+The setup is intentionally manual (hand-written code, no generators), minimal (as few external libraries as possible), lightweight, performance-optimized, modern, and modular. The goal is to give you a solid foundation to understand the code and make the site your own.
 
 
 ## What You Will Learn
