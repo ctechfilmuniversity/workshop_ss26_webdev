@@ -25,8 +25,10 @@ A website with multiple pages needs a way to decide: "when the user visits `/abo
 There are several approaches to routing:
 
 - **Server-side routing** (traditional): the server receives the URL, picks the right file, and sends back HTML. Every navigation is a full page reload.
-- **Client-side routing** (SPAs): JavaScript intercepts link clicks, updates the URL without reloading, and swaps the page content in place. Faster navigations; more complex setup.
+- **Client-side routing** (SPAs: Single-Page Application): The browser loads one HTML page on the first visit and then never does a full page reload again. JavaScript intercepts link clicks, updates the URL without reloading, and swaps the page content in place. Faster navigations; more complex setup.
 - **File-system routing** (Next.js): the folder structure of your code is the router. No configuration file, no route registration — the file's location is the URL.
+
+
 
 ### 3.2 File-System Routing in Next.js
 
@@ -84,7 +86,7 @@ A folder wrapped in square brackets creates a dynamic route segment — any URL 
 app/(routes)/projects/[slug]/page.tsx
 ```
 
-This one file handles `/projects/generative-art`, `/projects/shader-studies`, and any other value in that position. Inside the component, `params.slug` gives you the actual URL value.
+This one file handles `/projects/project1`, `/projects/project2`, and any other value in that position. Inside the component, `params.slug` gives you the actual URL value.
 
 ### 3.6 Server and Client Components
 
@@ -98,6 +100,20 @@ Already introduced in Part 1, but worth repeating as the guiding rule for everyt
 | **Cannot use**     | `useState`, `useEffect`, event handlers | Secrets, direct file/database access                  |
 | **JS to browser?** | None                                    | Yes (adds to bundle size)                             |
 | **Use when**       | Displaying data, static content         | Interactivity, user input, animation                  |
+
+*On a Side Note*:  
+Secrets are sensitive values that must never be sent to the browser — things like:
+
+* API keys (e.g. a key to access OpenAI, Google Maps, or a payment service)
+* Database credentials (username + password to connect to a database)
+* Authentication tokens or private certificates
+* Environment variables like DATABASE_URL or STRIPE_SECRET_KEY
+  
+Server components can safely use these because they run only at build time or on the server — the secret value is never included in the JavaScript bundle sent to the browser. A client component runs in the browser, so anything it can access is visible to anyone who opens the browser dev tools.
+
+For a static portfolio site this is mostly theoretical — there are no secrets. But it becomes important the moment you add, say, a contact form that sends email via an API, or fetch data from a paid service.
+
+
 
 ### 3.7 Creating All Page Stubs
 

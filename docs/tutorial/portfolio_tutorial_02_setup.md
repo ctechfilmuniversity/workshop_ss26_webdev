@@ -260,6 +260,9 @@ Change to `target` to `"target":"ES2022",` and make sure that `"strict": true,`.
 
 ### 2.7 React DevTools
 
+Optional:
+
+<br />
 Install the **React DevTools** browser extension ([Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)). It adds a **Components** tab to the browser developer tools where you can inspect the component tree, see which props each component received, and watch state changes in real time.
 
 This is valuable for debugging. When something looks wrong on screen, open DevTools → Components and inspect what data your component actually received.
