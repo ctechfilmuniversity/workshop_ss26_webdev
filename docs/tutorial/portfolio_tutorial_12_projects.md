@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "13. Projects"
+title: "12. Projects"
 parent: Tutorial
-nav_order: 13
+nav_order: 12
 has_children: false
 ---
 
@@ -18,15 +18,14 @@ has_children: false
 * [4. Header and Footer](portfolio_tutorial_04_header_footer)
 * [5. Tailwind CSS](portfolio_tutorial_05_tailwind)
 * [6. Navigation](portfolio_tutorial_06_navigation)
-* [7. Footer](portfolio_tutorial_07_footer)
-* [8. The Home Page](portfolio_tutorial_08_home)
-* [9. The About Page – Overview](portfolio_tutorial_09_about_overview)
-* [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
-* [11. Impressum](portfolio_tutorial_11_impressum)
-* [12. Contact](portfolio_tutorial_12_contact)
+* [7. The Home Page](portfolio_tutorial_07_home)
+* [8. The About Page – Overview](portfolio_tutorial_08_about_overview)
+* [9. The About Page – Accordion](portfolio_tutorial_09_about_accordion)
+* [10. Impressum](portfolio_tutorial_10_impressum)
+* [11. Contact](portfolio_tutorial_11_contact)
 
 
-## 13. Projects
+## 12. Projects
 
 The Projects section has three parts that work together:
 
@@ -40,7 +39,7 @@ The data flows like this: `app/(routes)/projects/projects.ts` is the single sour
 
 We build this in layers: first get both routes working with minimal placeholder content so you can verify the navigation, then fill each page with its full components, and add category filtering last.
 
-### 13.1 Data Layer
+### 12.1 Data Layer
 
 Each project lives entirely in a single MDX file — all structured data (title, slug, category, images) is exported as `metadata`, and the long-form prose content (Context, Process, Results) is the body of the file. `projects.ts` imports from these MDX files and assembles the `projects` array. This way there is only one file to edit per project.
 
@@ -120,7 +119,7 @@ The `/** ... */` JSDoc comments appear as tooltips in VS Code when you hover ove
 
 *On a Side Note*: This setup works well for a portfolio of up to around 20–30 projects. Because `projects.ts` imports every MDX file upfront, all MDX components end up in the JavaScript bundle of every page that imports from `projects.ts` — even the listing page, which never renders any of them. For a small portfolio this overhead is negligible. If the project count grows significantly, the better approach is to split the data back out: keep only plain serialisable fields (slug, title, category, thumbnail, description, introText, introImage, galleryImages) in `projects.ts` as plain objects, and move the MDX content to a separate `contentMap` in the detail page that maps each slug to its imported component. The listing page then only loads the lightweight metadata; each MDX component is only bundled with the detail page that actually uses it.
 
-### 13.2 Listing Page Skeleton
+### 12.2 Listing Page Skeleton
 
 Before building any components, get the routing working with the simplest possible output — a plain list of project titles as links. This confirms that the data layer is wired up and that clicking a project navigates to the right URL.
 
@@ -161,7 +160,7 @@ const Projects = () => {
 export default Projects;
 ```
 
-### 13.3 Detail Page Skeleton
+### 12.3 Detail Page Skeleton
 
 Before adding any content components, let's confirm that the dynamic route works, meaning clicking a project title from the listing should land on a page that shows the project's title and category.
 
@@ -222,7 +221,7 @@ Asynchrony
 
 
 
-### 13.4 ProjectCard
+### 12.4 ProjectCard
 
 `ProjectCard` renders a single project as a thumbnail image, a short description, and a link. It is used by the listing page's grid.
 
@@ -275,7 +274,7 @@ export default ProjectCard;
 
 When using `fill` on `next/image`, the parent container must have `position: relative` and explicit dimensions. `aspect-3/2` combined with `w-full` provides both.
 
-### 13.5 Project Page with ProjectCards
+### 12.5 Project Page with ProjectCards
 
 Replace the plain list with a two-column card grid. The filtering component is not added yet — that comes last.  
 
@@ -314,7 +313,7 @@ const Projects = () => {
 export default Projects;
 ```
 
-### 13.6 Project MDX Content Files
+### 12.6 Project MDX Content Files
 
 Each project is a single MDX file that contains both all structured data as `metadata` and the long-form prose content as the body. Create the folder `app/(routes)/projects/[slug]/content/` and add one file per project.
 
@@ -382,7 +381,7 @@ export const metadata = {
 
 `width` and `height` tell Next.js the intrinsic dimensions of the source file so it can calculate the aspect ratio — they do not control the display size. `className="w-full h-auto"` makes the image stretch to the full width of the article container while preserving its proportions.
 
-### 13.7 ProjectImageGallery
+### 12.7 ProjectImageGallery
 
 ProjectImageGallery receives an array of four images. On small screens the images stack in a single column; on `sm+` they switch to an asymmetric grid where the first image spans two rows:
 
@@ -465,7 +464,7 @@ const ProjectImageGallery = ({ images }: { images: GalleryImage[] }) => {
 export default ProjectImageGallery;
 ```
 
-### 13.8 Project Detail Page
+### 12.8 Project Detail Page
 
 Now fill in the detail page with the intro image, intro text, MDX body, and gallery. The intro section reuses `TextImageBox` — the same float-based image and text layout already used on the About page. Because each project object already carries its own `Component` (imported from its MDX file via `projects.ts`), there is no `contentMap` needed — we simply destructure `Component` from the matched project and render it.
 
@@ -543,7 +542,7 @@ const ProjectPage = async ({ params }: Props) => {
 export default ProjectPage;
 ```
 
-### 13.9 Category Filtering
+### 12.9 Category Filtering
 
 For the time when we have dozens of projects, we would like to have some filtering based on categories.
 
@@ -641,7 +640,7 @@ export default Projects;
 
 The listing page itself stays a Server Component. It reads the data at build time and passes the full lists down as props. `ProjectCategoryFilter` is the only part that runs in the browser — it owns the `activeCategory` state and re-renders the grid on every click.
 
-### 13.10 Verify the Build
+### 12.10 Verify the Build
 
 Run the production build to confirm that every static page generates correctly and there are no TypeScript or MDX errors:
 
@@ -681,8 +680,8 @@ If the build fails, Next.js prints the file and line number. Common issues at th
 
 ### Next
 
-* [14. Fonts](portfolio_tutorial_14_fonts)
-* [15. Summary](portfolio_tutorial_15_summary)
-* [16. Build and Deploy](portfolio_tutorial_16_deploy)
-* [17. References and Links](portfolio_tutorial_17_references)
+* [13. Fonts](portfolio_tutorial_13_fonts)
+* [14. Summary](portfolio_tutorial_14_summary)
+* [15. Build and Deploy](portfolio_tutorial_15_deploy)
+* [16. References and Links](portfolio_tutorial_16_references)
 

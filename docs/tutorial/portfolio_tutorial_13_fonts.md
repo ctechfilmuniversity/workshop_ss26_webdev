@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "14. Fonts"
+title: "13. Fonts"
 parent: Tutorial
-nav_order: 14
+nav_order: 13
 has_children: false
 ---
 
@@ -18,22 +18,21 @@ has_children: false
 * [4. Header and Footer](portfolio_tutorial_04_header_footer)
 * [5. Tailwind CSS](portfolio_tutorial_05_tailwind)
 * [6. Navigation](portfolio_tutorial_06_navigation)
-* [7. Footer](portfolio_tutorial_07_footer)
-* [8. The Home Page](portfolio_tutorial_08_home)
-* [9. The About Page – Overview](portfolio_tutorial_09_about_overview)
-* [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
-* [11. Impressum](portfolio_tutorial_11_impressum)
-* [12. Contact](portfolio_tutorial_12_contact)
-* [13. Projects](portfolio_tutorial_13_projects)
+* [7. The Home Page](portfolio_tutorial_07_home)
+* [8. The About Page – Overview](portfolio_tutorial_08_about_overview)
+* [9. The About Page – Accordion](portfolio_tutorial_09_about_accordion)
+* [10. Impressum](portfolio_tutorial_10_impressum)
+* [11. Contact](portfolio_tutorial_11_contact)
+* [12. Projects](portfolio_tutorial_12_projects)
 
 
-## 14. Fonts
+## 13. Fonts
 
 With a simplified layout and large texts like the one on this page, fonts do matter. Hence in the following, we setup the code for being able to use different fonts.  
   
 The font setup has two parts. First, Next.js loads the font files and exposes them as CSS custom properties. Second, `globals.css` assigns those properties to semantic aliases (`--font-headers`, `--font-body`) that the rest of the stylesheet uses. This two-step approach means switching fonts later only requires changing one small block in `globals.css`, nothing else needs to change.
 
-### 14.1 Loading Fonts
+### 13.1 Loading Fonts
 
 `next/font/google` downloads font files from Google Fonts **at build time** and serves them from your own domain. 
 
@@ -55,7 +54,7 @@ const myFont = localFont({
 
 The font file can live anywhere in the project and a common convention is `app/fonts/`. Everything else (attaching it to `<html>`, creating CSS aliases) works exactly the same as with `next/font/google`.
 
-### 14.2 Load the Font in `layout.tsx
+### 13.2 Load the Font in `layout.tsx
 
 We use [Inter](https://rsms.me/inter/) (developed by [Rasmus Andersson](https://rsms.me/)), a clean variable font well-suited to portfolio sites. Obviously, feel free to use a different font, every font listed under [https://fonts.google.com/](https://fonts.google.com/) works with the following setup.
 
@@ -104,7 +103,7 @@ export default function RootLayout({
 }
 ```
 
-### 14.3 Add Font Variables to `globals.css`
+### 13.3 Add Font Variables to `globals.css`
 
 `next/font/google` injects `--font-inter` onto `<html>`, but nothing uses it yet. Add semantic aliases and apply them to `body` and headings.
 
@@ -145,7 +144,7 @@ h1, h2, h3 {
 }
 ```
 
-### 14.4 Additional Fonts
+### 13.4 Additional Fonts
 
 Let's say we want a different font for the body sections of our page, e.g. [Playwrite](https://fonts.google.com/specimen/Playwrite+GB+J+Guides?preview.script=Latn).
 
@@ -186,7 +185,7 @@ Everything that uses `--font-headers` updates automatically.
 
 ### Next
 
-* [15. Summary](portfolio_tutorial_15_summary)
-* [16. Build and Deploy](portfolio_tutorial_16_deploy)
-* [17. References and Links](portfolio_tutorial_17_references)
+* [14. Summary](portfolio_tutorial_14_summary)
+* [15. Build and Deploy](portfolio_tutorial_15_deploy)
+* [16. References and Links](portfolio_tutorial_16_references)
 

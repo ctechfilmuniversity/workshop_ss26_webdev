@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "12. Contact"
+title: "11. Contact"
 parent: Tutorial
-nav_order: 12
+nav_order: 11
 has_children: false
 ---
 
@@ -18,14 +18,13 @@ has_children: false
 * [4. Header and Footer](portfolio_tutorial_04_header_footer)
 * [5. Tailwind CSS](portfolio_tutorial_05_tailwind)
 * [6. Navigation](portfolio_tutorial_06_navigation)
-* [7. Footer](portfolio_tutorial_07_footer)
-* [8. The Home Page](portfolio_tutorial_08_home)
-* [9. The About Page – Overview](portfolio_tutorial_09_about_overview)
-* [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
-* [11. Impressum](portfolio_tutorial_11_impressum)
+* [7. The Home Page](portfolio_tutorial_07_home)
+* [8. The About Page – Overview](portfolio_tutorial_08_about_overview)
+* [9. The About Page – Accordion](portfolio_tutorial_09_about_accordion)
+* [10. Impressum](portfolio_tutorial_10_impressum)
 
 
-## 12. Contact
+## 11. Contact
 
 The contact page uses icons from [Lucide React](https://lucide.dev/). Lucide React is an open-source icon library that provides icons as React components. Instead of managing SVG files manually or using an icon font, you import individual icons directly:
 
@@ -119,9 +118,9 @@ export default Contact;
 
 ### Next
 
-* [13. Projects](portfolio_tutorial_13_projects)
-* [14. Fonts](portfolio_tutorial_14_fonts)
-* [15. Summary](portfolio_tutorial_15_summary)
-* [16. Build and Deploy](portfolio_tutorial_16_deploy)
-* [17. References and Links](portfolio_tutorial_17_references)
+* [12. Projects](portfolio_tutorial_12_projects)
+* [13. Fonts](portfolio_tutorial_13_fonts)
+* [14. Summary](portfolio_tutorial_14_summary)
+* [15. Build and Deploy](portfolio_tutorial_15_deploy)
+* [16. References and Links](portfolio_tutorial_16_references)
 

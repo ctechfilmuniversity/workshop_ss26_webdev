@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "10. The About Page – Accordion"
+title: "9. The About Page – Accordion"
 parent: Tutorial
-nav_order: 10
+nav_order: 9
 has_children: false
 ---
 
@@ -18,12 +18,11 @@ has_children: false
 * [4. Header and Footer](portfolio_tutorial_04_header_footer)
 * [5. Tailwind CSS](portfolio_tutorial_05_tailwind)
 * [6. Navigation](portfolio_tutorial_06_navigation)
-* [7. Footer](portfolio_tutorial_07_footer)
-* [8. The Home Page](portfolio_tutorial_08_home)
-* [9. The About Page – Overview](portfolio_tutorial_09_about_overview)
+* [7. The Home Page](portfolio_tutorial_07_home)
+* [8. The About Page – Overview](portfolio_tutorial_08_about_overview)
 
 
-## 10. The About Page - Details in an Accordion Stack
+## 9. The About Page - Details in an Accordion Stack
 
 So far, every page in this project has its content written directly in TypeScript — as strings passed to components as props, or as JSX elements. That works fine for short, stable text. But a CV is different: it is long, structured, and changes regularly. Writing and maintaining it as JSX would be tedious.
 
@@ -50,7 +49,7 @@ For our about page we use MDX in two ways:
 
 This separation means that editing the content for your About page implies editing a `.mdx` file, not touching any source code of the page.
 
-### 10.1 Installing MDX Support
+### 9.1 Installing MDX Support
 
 Install three packages:
 
@@ -63,7 +62,7 @@ What each does:
 - `@mdx-js/loader` — the Turbopack loader that compiles `.mdx` files into React components
 - `@mdx-js/react` — the React-side MDX runtime
 
-#### 10.1.1 Configuring next.config.ts
+#### 9.1.1 Configuring next.config.ts
 
 We need to tell Next.js that .mdx files should be treated as pages/components. While we're editing the config file, we'll also set output: "export", which tells Next.js to generate plain HTML/CSS/JS files that can be hosted without a server. The two settings are unrelated; it's just convenient to add both at once.
 
@@ -106,7 +105,7 @@ export default withMDX(nextConfig);
 ```
 
 
-#### 10.1.2 mdx-components.tsx
+#### 9.1.2 mdx-components.tsx
 
 Next.js requires a file named `mdx-components.tsx` at the project root when using `@next/mdx`. It lets you override how MDX renders standard Markdown elements (headings, paragraphs, links, etc.). For now we leave everything as default.
 
@@ -124,7 +123,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 ```
 
-#### 10.1.3 mdx.d.ts — Type Declarations
+#### 9.1.3 mdx.d.ts — Type Declarations
 
 TypeScript does not know what to expect when you import a .mdx file as there's no built-in type for it. The declaration file tells TypeScript to treat any .mdx import as a React component.
 
@@ -154,7 +153,7 @@ declare module "*.mdx" {
 
 Without this file, TypeScript would show a red error on every MDX import.
 
-#### 10.1.4 Typography Plugin
+#### 9.1.4 Typography Plugin
 
 `@tailwindcss/typography` is an official Tailwind plugin that adds a single prose class. Apply prose to a container and it automatically styles all HTML elements inside it, e.g., headings get sizes, paragraphs get spacing, lists get bullets, links get underlines, and so on.
 
@@ -178,7 +177,7 @@ Add one line directly after the Tailwind import.
 The plugin adds `prose` utility classes we will apply to the accordion content later.
 
 
-### 10.2 The MDX Files
+### 9.2 The MDX Files
 
 Create the folder `app/(routes)/about/content/` and add the following three files.
 
@@ -261,10 +260,10 @@ export const metadata = { title: "Publications" }
 ```
 
 ---
-### 10.3 The Accordion
+### 9.3 The Accordion
 
 
-#### 10.3.1 The AccordionEntry Skeleton
+#### 9.3.1 The AccordionEntry Skeleton
 
 We present all biographical details in an accordion, which is a list of collapsible sections. Clicking a header expands that section's content and closes whichever section was open before, so only one is visible at a time.
 
@@ -300,7 +299,7 @@ const AccordionEntry = ({ title, index, openIndex, onToggle, children }: Accordi
 export default AccordionEntry;
 ```
 
-#### 10.3.2 The Toggle Button
+#### 9.3.2 The Toggle Button
 
 Add the `isOpen` variable and the clickable header button.
 
@@ -364,7 +363,7 @@ export default AccordionEntry;
 
 
 
-#### 10.3.3 AccordionAbout Skeleton
+#### 9.3.3 AccordionAbout Skeleton
 
 `AccordionAbout` is the parent that owns the open/closed state and renders one `AccordionEntry` per MDX file. Start by setting up the imports and the `sections` data array.
 
@@ -432,7 +431,7 @@ export default AccordionAbout;
 
 
 
-#### 10.3.4 Update the About Page
+#### 9.3.4 Update the About Page
 
 **`app/(routes)/about/page.tsx`**:
 ```tsx
@@ -469,7 +468,7 @@ You should have two accordion entries with the temporary data now.
 
 
 
-#### 10.3.5 Load MDX data into AccordionAbout
+#### 9.3.5 Load MDX data into AccordionAbout
 
 The accordion works with placeholder data. Now we replace it with real MDX content. Three things change in `AccordionAbout.tsx`:
 
@@ -549,7 +548,7 @@ export default AccordionAbout;
 
 The accordion should now show four entries with the titles from the MDX metadata. The content will be visible when expanded, but the typography will look bad. That is fixed next.
 
-#### 10.3.6 Style the Content Area
+#### 9.3.6 Style the Content Area
 
 Tailwind's reset stripped the browser's default typography styles from the rendered Markdown. The `@tailwindcss/typography` plugin's `prose` class restores them. Update the `<article>` element.
 
@@ -592,7 +591,7 @@ Tailwind's reset stripped the browser's default typography styles from the rende
 
 Headings, lists, and paragraph spacing should now look correct inside each expanded section.
 
-#### 10.3.7 Responsive Table Styles
+#### 9.3.7 Responsive Table Styles
 
 On small screens, tables with many columns no longer fit side-by-side. Add the following inside the `@layer base` block to collapse table rows into vertical blocks on mobile.
 
@@ -640,11 +639,11 @@ On small screens, tables with many columns no longer fit side-by-side. Add the f
 
 ### Next
 
-* [11. Impressum](portfolio_tutorial_11_impressum)
-* [12. Contact](portfolio_tutorial_12_contact)
-* [13. Projects](portfolio_tutorial_13_projects)
-* [14. Fonts](portfolio_tutorial_14_fonts)
-* [15. Summary](portfolio_tutorial_15_summary)
-* [16. Build and Deploy](portfolio_tutorial_16_deploy)
-* [17. References and Links](portfolio_tutorial_17_references)
+* [10. Impressum](portfolio_tutorial_10_impressum)
+* [11. Contact](portfolio_tutorial_11_contact)
+* [12. Projects](portfolio_tutorial_12_projects)
+* [13. Fonts](portfolio_tutorial_13_fonts)
+* [14. Summary](portfolio_tutorial_14_summary)
+* [15. Build and Deploy](portfolio_tutorial_15_deploy)
+* [16. References and Links](portfolio_tutorial_16_references)
 

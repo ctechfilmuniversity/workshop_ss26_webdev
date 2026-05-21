@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "15. Summary"
+title: "14. Summary"
 parent: Tutorial
-nav_order: 15
+nav_order: 14
 has_children: false
 ---
 
@@ -18,19 +18,18 @@ has_children: false
 * [4. Header and Footer](portfolio_tutorial_04_header_footer)
 * [5. Tailwind CSS](portfolio_tutorial_05_tailwind)
 * [6. Navigation](portfolio_tutorial_06_navigation)
-* [7. Footer](portfolio_tutorial_07_footer)
-* [8. The Home Page](portfolio_tutorial_08_home)
-* [9. The About Page – Overview](portfolio_tutorial_09_about_overview)
-* [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
-* [11. Impressum](portfolio_tutorial_11_impressum)
-* [12. Contact](portfolio_tutorial_12_contact)
-* [13. Projects](portfolio_tutorial_13_projects)
-* [14. Fonts](portfolio_tutorial_14_fonts)
+* [7. The Home Page](portfolio_tutorial_07_home)
+* [8. The About Page – Overview](portfolio_tutorial_08_about_overview)
+* [9. The About Page – Accordion](portfolio_tutorial_09_about_accordion)
+* [10. Impressum](portfolio_tutorial_10_impressum)
+* [11. Contact](portfolio_tutorial_11_contact)
+* [12. Projects](portfolio_tutorial_12_projects)
+* [13. Fonts](portfolio_tutorial_13_fonts)
 
 
-## 15. Summary
+## 14. Summary
 
-## 15.1 The Complete File Structure
+## 14.1 The Complete File Structure
 
 After all steps:
 
@@ -97,7 +96,7 @@ portfolio/
 └── tsconfig.json
 ```
 
-### 15.2 What to Personalise
+### 14.2 What to Personalise
 
 Replace every `[bracket]` placeholder before publishing:
 
@@ -116,6 +115,6 @@ Replace every `[bracket]` placeholder before publishing:
 
 ### Next
 
-* [16. Build and Deploy](portfolio_tutorial_16_deploy)
-* [17. References and Links](portfolio_tutorial_17_references)
+* [15. Build and Deploy](portfolio_tutorial_15_deploy)
+* [16. References and Links](portfolio_tutorial_16_references)
 

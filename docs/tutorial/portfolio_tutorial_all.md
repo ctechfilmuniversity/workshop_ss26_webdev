@@ -2,7 +2,7 @@
 layout: default
 title: All Steps in One
 parent: Tutorial
-nav_order: 18
+nav_order: 17
 has_children: false
 ---
 
@@ -27,7 +27,7 @@ Files & Data:
 
 ---
   
-> Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted. Claude was instructed to draw from the official documentation of all technologies used and those (also see [17. References](./portfolio_tutorial_17_references.md)) should be considered reference material throughout.
+> Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted. Claude was instructed to draw from the official documentation of all technologies used and those (also see [16. References](./portfolio_tutorial_16_references.md)) should be considered reference material throughout.
 
 
 ---
@@ -36,14 +36,14 @@ Files & Data:
     * [What We Are Building](#what-we-are-building)
         * [What You Will Learn](#what-you-will-learn)
     * [1. Tech Stack](#1-tech-stack)
-        * [1.1 Static vs. Dynamic Websites](#11-static-vs-dynamic-websites)
-        * [1.2 npm and Node.js](#12-npm-and-nodejs)
-        * [1.3 Next.js](#13-nextjs)
-        * [1.4 React](#14-react)
-        * [1.5 TypeScript](#15-typescript)
-            * [1.5.1  Custom Types For Component Props](#151--custom-types-for-component-props)
-        * [1.6 Tailwind CSS](#16-tailwind-css)
-        * [1.7 MDX](#17-mdx)
+        * [1.1 Static vs. Dynamic Websites](#10-static-vs-dynamic-websites)
+        * [1.2 npm and Node.js](#11-npm-and-nodejs)
+        * [1.3 Next.js](#12-nextjs)
+        * [1.4 React](#13-react)
+        * [1.5 TypeScript](#14-typescript)
+            * [1.5.1  Custom Types For Component Props](#141--custom-types-for-component-props)
+        * [1.6 Tailwind CSS](#15-tailwind-css)
+        * [1.7 MDX](#16-mdx)
     * [2. Project Setup](#2-project-setup)
         * [2.1 Installing Node.js](#21-installing-nodejs)
         * [2.2 Creating the Project](#22-creating-the-project)
@@ -87,59 +87,58 @@ Files & Data:
             * [6.4.4 — Refactor: One Link List for Both Menus](#644--refactor-one-link-list-for-both-menus)
         * [6.5 — A "Say Hi" Button](#65--a-say-hi-button)
         * [6.5.1 — Integrate Button Into Header.tsx](#651--integrate-button-into-headertsx)
-    * [7. Footer](#7-footer)
-    * [8. The Home Page](#8-the-home-page)
-        * [8.1 Components](#81-components)
-        * [8.1.1 Utility Components](#811-utility-components)
-        * [8.1.2 Combining Components](#812-combining-components)
-        * [8.2 Putting the Components on the Home Page](#82-putting-the-components-on-the-home-page)
-        * [8.3 Styling](#83-styling)
-    * [9. The About Page - Overview](#9-the-about-page---overview)
-        * [9.1 TextImageBox Component](#91-textimagebox-component)
-        * [9.2 HeroSectionTextImage Component](#92-herosectiontextimage-component)
-        * [9.3 Putting It Together](#93-putting-it-together)
-    * [10. The About Page - Details in an Accordion Stack](#10-the-about-page---details-in-an-accordion-stack)
-        * [10.1 Installing MDX Support](#101-installing-mdx-support)
-            * [10.1.1 Configuring next.config.ts](#1011-configuring-nextconfigts)
-            * [10.1.2 mdx-components.tsx](#1012-mdx-componentstsx)
-            * [10.1.3 mdx.d.ts — Type Declarations](#1013-mdxdts--type-declarations)
-            * [10.1.4 Typography Plugin](#1014-typography-plugin)
-        * [10.2 The MDX Files](#102-the-mdx-files)
-        * [10.3 The Accordion](#103-the-accordion)
-            * [10.3.1 The AccordionEntry Skeleton](#1031-the-accordionentry-skeleton)
-            * [10.3.2 The Toggle Button](#1032-the-toggle-button)
-            * [10.3.3 AccordionAbout Skeleton](#1033-accordionabout-skeleton)
-            * [10.3.4 Update the About Page](#1034-update-the-about-page)
-            * [10.3.5 Load MDX data into AccordionAbout](#1035-load-mdx-data-into-accordionabout)
-            * [10.3.6 Style the Content Area](#1036-style-the-content-area)
-            * [10.3.7 Responsive Table Styles](#1037-responsive-table-styles)
-    * [11. Impressum](#11-impressum)
-    * [12. Contact](#12-contact)
-    * [13. Projects](#13-projects)
-        * [13.1 Data Layer](#131-data-layer)
-        * [13.2 Listing Page Skeleton](#132-listing-page-skeleton)
-        * [13.3 Detail Page Skeleton](#133-detail-page-skeleton)
-        * [13.4 ProjectCard](#134-projectcard)
-        * [13.5 Project Page with ProjectCards](#135-project-page-with-projectcards)
-        * [13.6 Project MDX Content Files](#136-project-mdx-content-files)
-        * [13.7 ProjectImageGallery](#137-projectimagegallery)
-        * [13.8 Project Detail Page](#138-project-detail-page)
-        * [13.9 Category Filtering](#139-category-filtering)
-        * [13.10 Verify the Build](#1310-verify-the-build)
-    * [14. Fonts](#14-fonts)
-        * [14.1 Loading Fonts](#141-loading-fonts)
-        * [14.2 Load the Font in \`layout.tsx](#142-load-the-font-in-layouttsx)
-        * [14.3 Add Font Variables to `globals.css`](#143-add-font-variables-to-globalscss)
-        * [14.4 Additional Fonts](#144-additional-fonts)
-    * [15. Summary](#15-summary)
-    * [15.1 The Complete File Structure](#151-the-complete-file-structure)
-        * [15.2 What to Personalise](#152-what-to-personalise)
-    * [16. Build and Deploy](#16-build-and-deploy)
-        * [16.1 Git and GitHub](#161-git-and-github)
-        * [16.2 Render](#162-render)
-        * [16.3 Updating the Site](#163-updating-the-site)
-        * [16.4 A Custom Domain](#164-a-custom-domain)
-    * [17. References and Links](#17-references-and-links)
+    * [7. The Home Page](#7-the-home-page)
+        * [7.1 Components](#71-components)
+        * [7.1.1 Utility Components](#711-utility-components)
+        * [7.1.2 Combining Components](#712-combining-components)
+        * [7.2 Putting the Components on the Home Page](#72-putting-the-components-on-the-home-page)
+        * [7.3 Styling](#73-styling)
+    * [8. The About Page - Overview](#8-the-about-page---overview)
+        * [8.1 TextImageBox Component](#81-textimagebox-component)
+        * [8.2 HeroSectionTextImage Component](#82-herosectiontextimage-component)
+        * [8.3 Putting It Together](#83-putting-it-together)
+    * [9. The About Page - Details in an Accordion Stack](#9-the-about-page---details-in-an-accordion-stack)
+        * [9.1 Installing MDX Support](#91-installing-mdx-support)
+            * [9.1.1 Configuring next.config.ts](#911-configuring-nextconfigts)
+            * [9.1.2 mdx-components.tsx](#912-mdx-componentstsx)
+            * [9.1.3 mdx.d.ts — Type Declarations](#913-mdxdts--type-declarations)
+            * [9.1.4 Typography Plugin](#914-typography-plugin)
+        * [9.2 The MDX Files](#92-the-mdx-files)
+        * [9.3 The Accordion](#93-the-accordion)
+            * [9.3.1 The AccordionEntry Skeleton](#931-the-accordionentry-skeleton)
+            * [9.3.2 The Toggle Button](#932-the-toggle-button)
+            * [9.3.3 AccordionAbout Skeleton](#933-accordionabout-skeleton)
+            * [9.3.4 Update the About Page](#934-update-the-about-page)
+            * [9.3.5 Load MDX data into AccordionAbout](#935-load-mdx-data-into-accordionabout)
+            * [9.3.6 Style the Content Area](#936-style-the-content-area)
+            * [9.3.7 Responsive Table Styles](#937-responsive-table-styles)
+    * [10. Impressum](#10-impressum)
+    * [11. Contact](#11-contact)
+    * [12. Projects](#12-projects)
+        * [12.1 Data Layer](#121-data-layer)
+        * [12.2 Listing Page Skeleton](#122-listing-page-skeleton)
+        * [12.3 Detail Page Skeleton](#123-detail-page-skeleton)
+        * [12.4 ProjectCard](#124-projectcard)
+        * [12.5 Project Page with ProjectCards](#125-project-page-with-projectcards)
+        * [12.6 Project MDX Content Files](#126-project-mdx-content-files)
+        * [12.7 ProjectImageGallery](#127-projectimagegallery)
+        * [12.8 Project Detail Page](#128-project-detail-page)
+        * [12.9 Category Filtering](#129-category-filtering)
+        * [12.10 Verify the Build](#1210-verify-the-build)
+    * [13. Fonts](#13-fonts)
+        * [13.1 Loading Fonts](#131-loading-fonts)
+        * [13.2 Load the Font in \`layout.tsx](#132-load-the-font-in-layouttsx)
+        * [13.3 Add Font Variables to `globals.css`](#133-add-font-variables-to-globalscss)
+        * [13.4 Additional Fonts](#134-additional-fonts)
+    * [14. Summary](#14-summary)
+    * [14.1 The Complete File Structure](#141-the-complete-file-structure)
+        * [14.2 What to Personalise](#142-what-to-personalise)
+    * [15. Build and Deploy](#15-build-and-deploy)
+        * [15.1 Git and GitHub](#151-git-and-github)
+        * [15.2 Render](#152-render)
+        * [15.3 Updating the Site](#153-updating-the-site)
+        * [15.4 A Custom Domain](#154-a-custom-domain)
+    * [16. References and Links](#16-references-and-links)
 
 
 ---
@@ -1662,7 +1661,7 @@ The header now shows a responsive nav — inline row on desktop, a dropdown on m
 
 
 
-## 7. Footer
+#### 4.2.2 Footer Content
 
 Let's put some actual data into the footer.
 
@@ -1705,7 +1704,7 @@ The middle line uses Tailwind utility classes directly — `text-gray-500 text-x
 
 ---
 
-## 8. The Home Page
+## 7. The Home Page
 
 As of now home page has three sections stacked vertically (of course you can change that eventually):
 
@@ -1715,8 +1714,8 @@ As of now home page has three sections stacked vertically (of course you can cha
 
 First we are going to build the overall structure of the page, and then refine its styling.
 
-### 8.1 Components
-### 8.1.1 Utility Components
+### 7.1 Components
+### 7.1.1 Utility Components
 
 Add the following new class to the `@layer components` block.
 
@@ -1794,7 +1793,7 @@ export default HeroImage;
   
 With these utility components in place, we further put together in the following.
 
-### 8.1.2 Combining Components
+### 7.1.2 Combining Components
 
 **`app/components/HeroSectionText.tsx`**:
 ```tsx
@@ -1838,7 +1837,7 @@ const HeroCanvas = ({ children }: { children: React.ReactNode }) => {
 export default HeroCanvas;
 ```
 
-### 8.2 Putting the Components on the Home Page
+### 7.2 Putting the Components on the Home Page
 
 Now, we are using the newly created components to put the HOME page together.
 
@@ -1879,7 +1878,7 @@ The Image Ratio:
 
 
 
-### 8.3 Styling
+### 7.3 Styling
 
 For the needed styling, we use `@layer base`, and with that we target HTML elements directly (`body`, `h1`, `p`, etc.) rather than creating class names. These styles apply globally — every `<h1>` on every page automatically gets the same font size and weight without needing a class added to it.
 
@@ -1964,7 +1963,7 @@ The home page is now complete. Later we could replace the HeroImage with a shade
 
 ---
 
-## 9. The About Page - Overview
+## 8. The About Page - Overview
 
 The About page serves two purposes: a quick introduction about yourself on first sight, and deeper background, e.g. your CV, grants, publications, for those want to know more about you.
 
@@ -1975,7 +1974,7 @@ For that, the page has two visual sections:
 We start with building the first part with a text and image.
 
 
-### 9.1 TextImageBox Component
+### 8.1 TextImageBox Component
 
 The top of the about page shows a portrait image with text flowing beside it.
 
@@ -2019,7 +2018,7 @@ const TextImageBox = ({ text, src, alt, priority = false }: TextImageProps) => {
 export default TextImageBox;
 ```
 
-### 9.2 HeroSectionTextImage Component
+### 8.2 HeroSectionTextImage Component
 
 This component composes `HeroTitle` and `TextImageBox` — the same pattern as `HeroSectionText` but with an image.
 
@@ -2050,7 +2049,7 @@ export default HeroSectionTextImage;
 ```
 
 
-### 9.3 Putting It Together
+### 8.3 Putting It Together
 
 **`app/(routes)/about/page.tsx`**:
 ```tsx
@@ -2080,7 +2079,7 @@ Add your portrait photo at `public/img/portrait.jpg`. The `public/` folder is se
 
 
 
-## 10. The About Page - Details in an Accordion Stack
+## 9. The About Page - Details in an Accordion Stack
 
 So far, every page in this project has its content written directly in TypeScript — as strings passed to components as props, or as JSX elements. That works fine for short, stable text. But a CV is different: it is long, structured, and changes regularly. Writing and maintaining it as JSX would be tedious.
 
@@ -2107,7 +2106,7 @@ For our about page we use MDX in two ways:
 
 This separation means that editing the content for your About page implies editing a `.mdx` file, not touching any source code of the page.
 
-### 10.1 Installing MDX Support
+### 9.1 Installing MDX Support
 
 Install three packages:
 
@@ -2120,7 +2119,7 @@ What each does:
 - `@mdx-js/loader` — the Turbopack loader that compiles `.mdx` files into React components
 - `@mdx-js/react` — the React-side MDX runtime
 
-#### 10.1.1 Configuring next.config.ts
+#### 9.1.1 Configuring next.config.ts
 
 We need to tell Next.js that .mdx files should be treated as pages/components. While we're editing the config file, we'll also set output: "export", which tells Next.js to generate plain HTML/CSS/JS files that can be hosted without a server. The two settings are unrelated; it's just convenient to add both at once.
 
@@ -2163,7 +2162,7 @@ export default withMDX(nextConfig);
 ```
 
 
-#### 10.1.2 mdx-components.tsx
+#### 9.1.2 mdx-components.tsx
 
 Next.js requires a file named `mdx-components.tsx` at the project root when using `@next/mdx`. It lets you override how MDX renders standard Markdown elements (headings, paragraphs, links, etc.). For now we leave everything as default.
 
@@ -2181,7 +2180,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 }
 ```
 
-#### 10.1.3 mdx.d.ts — Type Declarations
+#### 9.1.3 mdx.d.ts — Type Declarations
 
 TypeScript does not know what to expect when you import a .mdx file as there's no built-in type for it. The declaration file tells TypeScript to treat any .mdx import as a React component.
 
@@ -2211,7 +2210,7 @@ declare module "*.mdx" {
 
 Without this file, TypeScript would show a red error on every MDX import.
 
-#### 10.1.4 Typography Plugin
+#### 9.1.4 Typography Plugin
 
 `@tailwindcss/typography` is an official Tailwind plugin that adds a single prose class. Apply prose to a container and it automatically styles all HTML elements inside it, e.g., headings get sizes, paragraphs get spacing, lists get bullets, links get underlines, and so on.
 
@@ -2235,7 +2234,7 @@ Add one line directly after the Tailwind import.
 The plugin adds `prose` utility classes we will apply to the accordion content later.
 
 
-### 10.2 The MDX Files
+### 9.2 The MDX Files
 
 Create the folder `app/(routes)/about/content/` and add the following three files.
 
@@ -2318,10 +2317,10 @@ export const metadata = { title: "Publications" }
 ```
 
 ---
-### 10.3 The Accordion
+### 9.3 The Accordion
 
 
-#### 10.3.1 The AccordionEntry Skeleton
+#### 9.3.1 The AccordionEntry Skeleton
 
 We present all biographical details in an accordion, which is a list of collapsible sections. Clicking a header expands that section's content and closes whichever section was open before, so only one is visible at a time.
 
@@ -2357,7 +2356,7 @@ const AccordionEntry = ({ title, index, openIndex, onToggle, children }: Accordi
 export default AccordionEntry;
 ```
 
-#### 10.3.2 The Toggle Button
+#### 9.3.2 The Toggle Button
 
 Add the `isOpen` variable and the clickable header button.
 
@@ -2421,7 +2420,7 @@ export default AccordionEntry;
 
 
 
-#### 10.3.3 AccordionAbout Skeleton
+#### 9.3.3 AccordionAbout Skeleton
 
 `AccordionAbout` is the parent that owns the open/closed state and renders one `AccordionEntry` per MDX file. Start by setting up the imports and the `sections` data array.
 
@@ -2489,7 +2488,7 @@ export default AccordionAbout;
 
 
 
-#### 10.3.4 Update the About Page
+#### 9.3.4 Update the About Page
 
 **`app/(routes)/about/page.tsx`**:
 ```tsx
@@ -2526,7 +2525,7 @@ You should have two accordion entries with the temporary data now.
 
 
 
-#### 10.3.5 Load MDX data into AccordionAbout
+#### 9.3.5 Load MDX data into AccordionAbout
 
 The accordion works with placeholder data. Now we replace it with real MDX content. Three things change in `AccordionAbout.tsx`:
 
@@ -2606,7 +2605,7 @@ export default AccordionAbout;
 
 The accordion should now show four entries with the titles from the MDX metadata. The content will be visible when expanded, but the typography will look bad. That is fixed next.
 
-#### 10.3.6 Style the Content Area
+#### 9.3.6 Style the Content Area
 
 Tailwind's reset stripped the browser's default typography styles from the rendered Markdown. The `@tailwindcss/typography` plugin's `prose` class restores them. Update the `<article>` element.
 
@@ -2649,7 +2648,7 @@ Tailwind's reset stripped the browser's default typography styles from the rende
 
 Headings, lists, and paragraph spacing should now look correct inside each expanded section.
 
-#### 10.3.7 Responsive Table Styles
+#### 9.3.7 Responsive Table Styles
 
 On small screens, tables with many columns no longer fit side-by-side. Add the following inside the `@layer base` block to collapse table rows into vertical blocks on mobile.
 
@@ -2695,7 +2694,7 @@ On small screens, tables with many columns no longer fit side-by-side. Add the f
 
 ---
 
-## 11. Impressum
+## 10. Impressum
 
 German law requires websites to display a legal notice (Impressum).  
 
@@ -2754,7 +2753,7 @@ Create a small screenshot of your email address (approximately 200–250 px wide
 
 ---
 
-## 12. Contact
+## 11. Contact
 
 The contact page uses icons from [Lucide React](https://lucide.dev/). Lucide React is an open-source icon library that provides icons as React components. Instead of managing SVG files manually or using an icon font, you import individual icons directly:
 
@@ -2846,7 +2845,7 @@ export default Contact;
 
 ---
 
-## 13. Projects
+## 12. Projects
 
 The Projects section has three parts that work together:
 
@@ -2860,7 +2859,7 @@ The data flows like this: `app/(routes)/projects/projects.ts` is the single sour
 
 We build this in layers: first get both routes working with minimal placeholder content so you can verify the navigation, then fill each page with its full components, and add category filtering last.
 
-### 13.1 Data Layer
+### 12.1 Data Layer
 
 Each project lives entirely in a single MDX file — all structured data (title, slug, category, images) is exported as `metadata`, and the long-form prose content (Context, Process, Results) is the body of the file. `projects.ts` imports from these MDX files and assembles the `projects` array. This way there is only one file to edit per project.
 
@@ -2940,7 +2939,7 @@ The `/** ... */` JSDoc comments appear as tooltips in VS Code when you hover ove
 
 *On a Side Note*: This setup works well for a portfolio of up to around 20–30 projects. Because `projects.ts` imports every MDX file upfront, all MDX components end up in the JavaScript bundle of every page that imports from `projects.ts` — even the listing page, which never renders any of them. For a small portfolio this overhead is negligible. If the project count grows significantly, the better approach is to split the data back out: keep only plain serialisable fields (slug, title, category, thumbnail, description, introText, introImage, galleryImages) in `projects.ts` as plain objects, and move the MDX content to a separate `contentMap` in the detail page that maps each slug to its imported component. The listing page then only loads the lightweight metadata; each MDX component is only bundled with the detail page that actually uses it.
 
-### 13.2 Listing Page Skeleton
+### 12.2 Listing Page Skeleton
 
 Before building any components, get the routing working with the simplest possible output — a plain list of project titles as links. This confirms that the data layer is wired up and that clicking a project navigates to the right URL.
 
@@ -2981,7 +2980,7 @@ const Projects = () => {
 export default Projects;
 ```
 
-### 13.3 Detail Page Skeleton
+### 12.3 Detail Page Skeleton
 
 Before adding any content components, let's confirm that the dynamic route works, meaning clicking a project title from the listing should land on a page that shows the project's title and category.
 
@@ -3042,7 +3041,7 @@ Asynchrony
 
 
 
-### 13.4 ProjectCard
+### 12.4 ProjectCard
 
 `ProjectCard` renders a single project as a thumbnail image, a short description, and a link. It is used by the listing page's grid.
 
@@ -3095,7 +3094,7 @@ export default ProjectCard;
 
 When using `fill` on `next/image`, the parent container must have `position: relative` and explicit dimensions. `aspect-3/2` combined with `w-full` provides both.
 
-### 13.5 Project Page with ProjectCards
+### 12.5 Project Page with ProjectCards
 
 Replace the plain list with a two-column card grid. The filtering component is not added yet — that comes last.  
 
@@ -3134,7 +3133,7 @@ const Projects = () => {
 export default Projects;
 ```
 
-### 13.6 Project MDX Content Files
+### 12.6 Project MDX Content Files
 
 Each project is a single MDX file that contains both all structured data as `metadata` and the long-form prose content as the body. Create the folder `app/(routes)/projects/[slug]/content/` and add one file per project.
 
@@ -3202,7 +3201,7 @@ export const metadata = {
 
 `width` and `height` tell Next.js the intrinsic dimensions of the source file so it can calculate the aspect ratio — they do not control the display size. `className="w-full h-auto"` makes the image stretch to the full width of the article container while preserving its proportions.
 
-### 13.7 ProjectImageGallery
+### 12.7 ProjectImageGallery
 
 ProjectImageGallery receives an array of four images. On small screens the images stack in a single column; on `sm+` they switch to an asymmetric grid where the first image spans two rows:
 
@@ -3285,7 +3284,7 @@ const ProjectImageGallery = ({ images }: { images: GalleryImage[] }) => {
 export default ProjectImageGallery;
 ```
 
-### 13.8 Project Detail Page
+### 12.8 Project Detail Page
 
 Now fill in the detail page with the intro image, intro text, MDX body, and gallery. The intro section reuses `TextImageBox` — the same float-based image and text layout already used on the About page. Because each project object already carries its own `Component` (imported from its MDX file via `projects.ts`), there is no `contentMap` needed — we simply destructure `Component` from the matched project and render it.
 
@@ -3363,7 +3362,7 @@ const ProjectPage = async ({ params }: Props) => {
 export default ProjectPage;
 ```
 
-### 13.9 Category Filtering
+### 12.9 Category Filtering
 
 For the time when we have dozens of projects, we would like to have some filtering based on categories.
 
@@ -3461,7 +3460,7 @@ export default Projects;
 
 The listing page itself stays a Server Component. It reads the data at build time and passes the full lists down as props. `ProjectCategoryFilter` is the only part that runs in the browser — it owns the `activeCategory` state and re-renders the grid on every click.
 
-### 13.10 Verify the Build
+### 12.10 Verify the Build
 
 Run the production build to confirm that every static page generates correctly and there are no TypeScript or MDX errors:
 
@@ -3499,13 +3498,13 @@ If the build fails, Next.js prints the file and line number. Common issues at th
 
 ---
 
-## 14. Fonts
+## 13. Fonts
 
 With a simplified layout and large texts like the one on this page, fonts do matter. Hence in the following, we setup the code for being able to use different fonts.  
   
 The font setup has two parts. First, Next.js loads the font files and exposes them as CSS custom properties. Second, `globals.css` assigns those properties to semantic aliases (`--font-headers`, `--font-body`) that the rest of the stylesheet uses. This two-step approach means switching fonts later only requires changing one small block in `globals.css`, nothing else needs to change.
 
-### 14.1 Loading Fonts
+### 13.1 Loading Fonts
 
 `next/font/google` downloads font files from Google Fonts **at build time** and serves them from your own domain. 
 
@@ -3527,7 +3526,7 @@ const myFont = localFont({
 
 The font file can live anywhere in the project and a common convention is `app/fonts/`. Everything else (attaching it to `<html>`, creating CSS aliases) works exactly the same as with `next/font/google`.
 
-### 14.2 Load the Font in `layout.tsx
+### 13.2 Load the Font in `layout.tsx
 
 We use [Inter](https://rsms.me/inter/) (developed by [Rasmus Andersson](https://rsms.me/)), a clean variable font well-suited to portfolio sites. Obviously, feel free to use a different font, every font listed under [https://fonts.google.com/](https://fonts.google.com/) works with the following setup.
 
@@ -3576,7 +3575,7 @@ export default function RootLayout({
 }
 ```
 
-### 14.3 Add Font Variables to `globals.css`
+### 13.3 Add Font Variables to `globals.css`
 
 `next/font/google` injects `--font-inter` onto `<html>`, but nothing uses it yet. Add semantic aliases and apply them to `body` and headings.
 
@@ -3617,7 +3616,7 @@ h1, h2, h3 {
 }
 ```
 
-### 14.4 Additional Fonts
+### 13.4 Additional Fonts
 
 Let's say we want a different font for the body sections of our page, e.g. [Playwrite](https://fonts.google.com/specimen/Playwrite+GB+J+Guides?preview.script=Latn).
 
@@ -3657,9 +3656,9 @@ Everything that uses `--font-headers` updates automatically.
 
 
 
-## 15. Summary
+## 14. Summary
 
-## 15.1 The Complete File Structure
+## 14.1 The Complete File Structure
 
 After all steps:
 
@@ -3726,7 +3725,7 @@ portfolio/
 └── tsconfig.json
 ```
 
-### 15.2 What to Personalise
+### 14.2 What to Personalise
 
 Replace every `[bracket]` placeholder before publishing:
 
@@ -3742,7 +3741,7 @@ Replace every `[bracket]` placeholder before publishing:
 
 
 
-## 16. Build and Deploy
+## 15. Build and Deploy
 
 This portfolio is a **static site** and `npm run build` compiles every page to plain HTML, CSS, and JavaScript in an `out/` folder. There is no server running, no database, just files. This makes hosting straightforward: put the `out/` folder (it is generated by Next's `build` command) somewhere that serves files over the web and the site is live.
 
@@ -3751,7 +3750,7 @@ The workflow we will set up is:
 1. **Git** and **GitHub** to track changes and to hold a copy of your code online, reachable from anywhere
 2. **Render** watches your GitHub repository and rebuilds and publishes the site automatically every time you push new code
 
-### 16.1 Git and GitHub
+### 15.1 Git and GitHub
 
 Check that the latest version of the page builds without any errors.
 
@@ -3797,7 +3796,7 @@ git push -u origin main
 
 After the push, refresh the GitHub page — all your project files should now appear there.
 
-### 16.2 Render
+### 15.2 Render
 
 Render is a cloud hosting platform. Its free tier can serve static sites with no time limit.
 
@@ -3819,7 +3818,7 @@ Render is a cloud hosting platform. Its free tier can serve static sites with no
 
 Render clones your repository, runs `npm run build`, and serves the contents of `out/`. The first deploy takes a few minutes. When it finishes, Render shows you a live URL ending in `.onrender.com` — your portfolio is online and publicly accessible.
 
-### 16.3 Updating the Site
+### 15.3 Updating the Site
 
 Every time you want to publish a change — new content, a style tweak, a new project — the workflow is always the same three commands:
 
@@ -3831,7 +3830,7 @@ git push
 
 Render detects the push automatically and starts a new build. When it finishes the live site is updated. The URL stays the same.
 
-### 16.4 A Custom Domain
+### 15.4 A Custom Domain
 
 Domain names are bought and managed through a separate service called a **domain registrar**. Common ones are [Namecheap](https://www.namecheap.com), [Porkbun](https://porkbun.com), or [Hover](https://www.hover.com), I am using [HostEurope](https://www.hosteurope.de/). You pay an annual fee (typically 10–20 EUR) and the registrar gives you control over a specific domain's DNS settings.
 
@@ -3847,7 +3846,7 @@ To connect a domain you own to your Render site:
 For me this step needed a bit of trial and error but eventually worked just fine.
 
 
-## 17. References and Links
+## 16. References and Links
 
 **Runtime and Package Management**
 

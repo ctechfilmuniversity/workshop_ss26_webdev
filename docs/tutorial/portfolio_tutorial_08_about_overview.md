@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "9. The About Page – Overview"
+title: "8. The About Page – Overview"
 parent: Tutorial
-nav_order: 9
+nav_order: 8
 has_children: false
 ---
 
@@ -18,11 +18,10 @@ has_children: false
 * [4. Header and Footer](portfolio_tutorial_04_header_footer)
 * [5. Tailwind CSS](portfolio_tutorial_05_tailwind)
 * [6. Navigation](portfolio_tutorial_06_navigation)
-* [7. Footer](portfolio_tutorial_07_footer)
-* [8. The Home Page](portfolio_tutorial_08_home)
+* [7. The Home Page](portfolio_tutorial_07_home)
 
 
-## 9. The About Page - Overview
+## 8. The About Page - Overview
 
 The About page serves two purposes: a quick introduction about yourself on first sight, and deeper background, e.g. your CV, grants, publications, for those want to know more about you.
 
@@ -33,7 +32,7 @@ For that, the page has two visual sections:
 We start with building the first part with a text and image.
 
 
-### 9.1 TextImageBox Component
+### 8.1 TextImageBox Component
 
 The top of the about page shows a portrait image with text flowing beside it.
 
@@ -77,7 +76,7 @@ const TextImageBox = ({ text, src, alt, priority = false }: TextImageProps) => {
 export default TextImageBox;
 ```
 
-### 9.2 HeroSectionTextImage Component
+### 8.2 HeroSectionTextImage Component
 
 This component composes `HeroTitle` and `TextImageBox` — the same pattern as `HeroSectionText` but with an image.
 
@@ -108,7 +107,7 @@ export default HeroSectionTextImage;
 ```
 
 
-### 9.3 Putting It Together
+### 8.3 Putting It Together
 
 **`app/(routes)/about/page.tsx`**:
 ```tsx
@@ -140,12 +139,12 @@ Add your portrait photo at `public/img/portrait.jpg`. The `public/` folder is se
 
 ### Next
 
-* [10. The About Page – Accordion](portfolio_tutorial_10_about_accordion)
-* [11. Impressum](portfolio_tutorial_11_impressum)
-* [12. Contact](portfolio_tutorial_12_contact)
-* [13. Projects](portfolio_tutorial_13_projects)
-* [14. Fonts](portfolio_tutorial_14_fonts)
-* [15. Summary](portfolio_tutorial_15_summary)
-* [16. Build and Deploy](portfolio_tutorial_16_deploy)
-* [17. References and Links](portfolio_tutorial_17_references)
+* [9. The About Page – Accordion](portfolio_tutorial_09_about_accordion)
+* [10. Impressum](portfolio_tutorial_10_impressum)
+* [11. Contact](portfolio_tutorial_11_contact)
+* [12. Projects](portfolio_tutorial_12_projects)
+* [13. Fonts](portfolio_tutorial_13_fonts)
+* [14. Summary](portfolio_tutorial_14_summary)
+* [15. Build and Deploy](portfolio_tutorial_15_deploy)
+* [16. References and Links](portfolio_tutorial_16_references)
 
