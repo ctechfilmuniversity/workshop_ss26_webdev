@@ -21,12 +21,29 @@ has_children: false
 
 ## 6. Navigation
 
+* [Tutorial - A Portfolio Page](#tutorial---a-portfolio-page)
+        * [Previous](#previous)
+    * [6. Navigation](#6-navigation)
+        * [6.1 — Extract The `nav` Into Its Own Component](#61--extract-the-nav-into-its-own-component)
+        * [6.2 — Replace inline classes with named CSS classes](#62--replace-inline-classes-with-named-css-classes)
+            * [6.2.1 aria-label](#621-aria-label)
+        * [6.3 — Add a mobile menu toggle button](#63--add-a-mobile-menu-toggle-button)
+        * [6.4 — The Dropdown Menu](#64--the-dropdown-menu)
+            * [6.4.1 — Close on Escape key](#641--close-on-escape-key)
+            * [6.4.2 —  Close on outside click](#642---close-on-outside-click)
+            * [6.4.3 useState vs. useEffect vs. useRef](#643-usestate-vs-useeffect-vs-useref)
+            * [6.4.4 — Add a chevron icon](#644--add-a-chevron-icon)
+            * [6.4.5 — Refactor: One Link List for Both Menus](#645--refactor-one-link-list-for-both-menus)
+        * [6.5 — A "Say Hi" Button](#65--a-say-hi-button)
+        * [6.5.1 — Integrate Button Into Header.tsx](#651--integrate-button-into-headertsx)
+        * [Next](#next)
+
+
 The header currently has an inline `<nav>` with links that only appear on desktop. This section makes it fully responsive: a horizontal row on desktop, a dropdown on mobile.
   
 *On a Side Note:* You can toggle in Firefox to mobile mode under `More Tools`  →  `Responsive Design Mode` (learn the hotkey!)
   
 
----
 
 ### 6.1 — Extract The `nav` Into Its Own Component
 
@@ -146,7 +163,9 @@ Without aria-label a screen reader would say "X, button", with it: "Close menu, 
 
 On small screens, the desktop nav is hidden. We need a button that opens a dropdown instead. This button needs to track whether the dropdown is open or closed — that is a **state**.
 
-**`useState`** is a React hook for storing a value inside a component. When you update it, React re-renders the component with the new value:
+**`useState`** is a React hook for storing a value inside a component. Hooks are how a component reaches beyond "take input, return JSX" and connects to React's internal machinery. 
+
+When you update `open`, React re-renders the component with the new value:
 
 ```tsx
 const [open, setOpen] = useState(false);
@@ -221,8 +240,10 @@ Note: the button does not yet show or hide a dropdown — open is tracked but no
 
 Add the button classes.
 
-**`app/globals.css`**:
+**`app/globals.css`** in `@layer components {}`:
 ```css
+
+
 .btn {
     @apply inline-flex items-center gap-2 border px-3 py-1
            text-sm text-gray-800
@@ -239,7 +260,42 @@ Add the button classes.
 
 Now, a "Menu" button appears on narrow screens. Clicking it does not open anything yet — `open` is `true` or `false`, but nothing renders based on it.
 
----
+
+#### React Hooks (Why you can't just use a JS variable)
+
+In React, a component is a function that runs every time React needs to re-render. Consider:
+
+```jsx
+const Counter = () => {
+    let count = 0;  // reset to 0 on every render
+
+    return (
+        <button onClick={() => { count++; console.log(count); }}>
+            Count: {count}
+        </button>
+    );
+};
+```
+When the button is clicked:
+
+* `count` increments to `1` in the console — the variable works
+* But the screen still shows Count: `0` — nothing re-rendered
+* Even if React did re-render, the function runs again and resets `count = 0`
+* Two problems: no re-render is triggered, and the variable doesn't survive a re-render anyway.
+
+
+`const [count, setCount] = useState(0);` does two things a plain variable cannot:
+
+1. Stores the value outside the function — React keeps it in its own memory, so it survives each time the component function re-runs.
+2. Tells React to re-render when it changes — calling `setCount(1)` schedules a re-render, so the screen updates.  
+A plain variable does neither.
+
+The general rule: Any value that should cause the UI to update when it changes must live in state. Values that are just intermediate calculations within a single render (e.g., a formatted string built from props) are fine as plain variables — they don't need to survive or trigger re-renders.
+
+For the accordion `openIndex` must be state because clicking an entry should visually open/close it. If it were a variable, clicks would silently update it and nothing on screen would change.
+
+
+
 
 ### 6.4 — The Dropdown Menu
 
@@ -326,7 +382,7 @@ useEffect(() => {
 }, [open]); // [open] dependency array: re-run whenever 'open' changes.
 ```
 
----
+
 
 #### 6.4.2 —  Close on outside click
 
@@ -390,9 +446,63 @@ On the dropdown panel:
 
 The three `aria-*` attributes on the button are for screen readers: `aria-haspopup` signals that the button controls a popup, `aria-expanded` reports whether it is currently open, and `aria-controls` links it to the panel by id.
 
----
+#### 6.4.3 `useState` vs. `useEffect` vs. `useRef`
 
-#### 6.4.3 — Add a chevron icon
+**useState** — "React, please remember this for me"
+* Stores a value that belongs to the component and triggers a re-render when it changes. That's its only job.
+* You write to it by calling the setter (`setOpen`). You read from it directly (`open`). Nothing happens automatically — it only reacts when you call the setter.
+
+> Every time React re-runs the component function, all local variables are gone. useState is how you tell React: "keep this value safe between runs, and if it changes, re-run the component so the screen updates.
+
+**useEffect** — "React, please do this after you've updated the screen"
+* Runs a side effect after the component renders. A side effect is anything that reaches outside the component's own output: fetching data, reading the DOM, setting up an event listener, starting a timer.
+
+```jsx
+useEffect(() => {
+    document.title = `${count} clicks`;
+}, [count]);  // re-runs whenever count changes
+```
+
+The second argument (the dependency array) controls when it runs:
+
+* `[]` — once, after the first render only
+* `[count]` — after every render where count changed
+* no array — after every render (rarely what you want)
+
+> Sometimes you need to do something that goes outside the component, e.g., talk to a server, set the page title, listen for keyboard events. You can't do those things in the middle of rendering because rendering should be fast and predictable.
+
+
+**useRef** — "React, please remember this, but don't bother re-drawing when it changes"
+* Stores a value that persists across renders — just like useState — but changing it does not cause a re-render.
+* The most common use is holding a reference to a DOM element so you can read or manipulate it directly (e.g. checking whether a click happened inside or outside a menu).
+
+```jsx
+const menuRef = useRef(null);
+
+// attach to a DOM element:
+<div ref={menuRef}>...</div>
+
+// later, read the actual DOM node:
+if (!menuRef.current.contains(event.target)) {
+    setOpen(false);
+}
+```
+* `ref.current` always holds the latest value and is readable immediately — no setter, no re-render cycle.
+* For our navigation component, useRef is used exactly this way, to detect outside clicks and close the mobile menu.
+
+> Like useState, it survives re-renders. Unlike useState, updating it does not cause React to re-run the component.
+
+
+|             | useState                           | useEffect                                 | useRef                                 |
+| ----------- | ---------------------------------- | ----------------------------------------- | -------------------------------------- |
+| Purpose     | store + remember a value           | run code in response to renders           | hold a reference without re-rendering  |
+| Triggers    | your code calls the setter         | React calls it automatically after render | you read/write `.current` directly     |
+| Re-renders  | yes, calling the setter causes one | no — effects don't trigger re-renders     | no — changing `.current` is silent     |
+| Typical use | UI state (open/closed, count)      | fetch data, set up listeners, timers      | reference a DOM node, store a timer ID |
+
+> `useState` connects to React's memory. `useEffect` connects to React's render lifecycle. `useRef` connects to the actual DOM.
+
+#### 6.4.4 — Add a chevron icon
 
 A small visual cue that rotates when the menu opens. Add it inside the button, after the text `Menu`.
 
@@ -433,7 +543,7 @@ The Rotation
 No JavaScript animation is involved — it is purely CSS reacting to a class being added or removed by React when open changes.
 
 
-#### 6.4.4 — Refactor: One Link List for Both Menus
+#### 6.4.5 — Refactor: One Link List for Both Menus
 
 Both the desktop `<nav>` and the mobile `<ul>` contain the same four href/label pairs. Any time you want to add a page, you have to add it in two places. The fix is to define the links once and render them twice using `.map()`.
 
@@ -537,7 +647,7 @@ Update `app/components/Header.tsx` to add the email button.
 **`app/components/Header.tsx`**:
 ```tsx
 // ADD:
-import ButtonEmail from "./ButtonEmail";
+import { ButtonEmail } from "./ButtonEmail";
 
 
 //...

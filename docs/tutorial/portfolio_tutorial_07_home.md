@@ -31,7 +31,7 @@ As of now home page has three sections stacked vertically (of course you can cha
 First we are going to build the overall structure of the page, and then refine its styling.
 
 ### 7.1 Components
-### 7.1.1 Utility Components
+#### 7.1.1 Utility Components
 
 Add the following new class to the `@layer components` block.
 
@@ -109,7 +109,7 @@ export default HeroImage;
   
 With these utility components in place, we further put together in the following.
 
-### 7.1.2 Combining Components
+#### 7.1.2 Combining Components
 
 **`app/components/HeroSectionText.tsx`**:
 ```tsx

@@ -558,7 +558,7 @@ Tailwind's reset stripped the browser's default typography styles from the rende
     /*
       prose: restores heading sizes, list bullets, and paragraph spacing
              that Tailwind's reset stripped from the Markdown-rendered HTML.
-      about-table: our custom class for responsive table layout (added in 10.3.7).
+      about-table: our custom class for responsive table layout (added in 9.3.7).
       [&_tr]:border-gray-300: Tailwind arbitrary variant — targets <tr> elements
              inside this article without writing a separate CSS rule.
       prose-*: modifier classes that fine-tune prose font sizes and spacing.
@@ -593,7 +593,7 @@ Headings, lists, and paragraph spacing should now look correct inside each expan
 
 #### 9.3.7 Responsive Table Styles
 
-On small screens, tables with many columns no longer fit side-by-side. Add the following inside the `@layer base` block to collapse table rows into vertical blocks on mobile.
+On small screens, tables with many columns no longer fit side-by-side. Add the following inside the `@layer components` block to collapse table rows into vertical blocks on mobile.
 
 **`app/globals.css`**:
 ```css

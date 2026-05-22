@@ -22,8 +22,8 @@ The setup is intentionally manual (hand-written code, no generators), minimal (a
 
 Files & Data:
 
-* [Image files for the exercises](../../code/data/img.zip)
-* [Final source code](../../code/final/workshop_ss26_webdev_portfolio/)
+* [Image files for the exercises](https://github.com/ctechfilmuniversity/workshop_ss26_webdev/blob/main/code/data/img.zip)
+* [Final source code](https://github.com/ctechfilmuniversity/workshop_ss26_webdev/tree/main/code/final/workshop_ss26_webdev_portfolio)
 
 ---
   

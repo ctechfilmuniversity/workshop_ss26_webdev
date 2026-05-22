@@ -108,6 +108,13 @@ export const categories = [
 ];
 ```
 
+Each entry in the `projects` array combines the metadata and the component in one step:
+```ts
+{ ...(project1Meta as ProjectMetadata), Component: Project1Component }
+```
+* `project1Meta as ProjectMetadata` — the MDX type declaration only guarantees a `title` field. The `as` cast tells TypeScript: "trust me, this metadata matches the full `ProjectMetadata` shape." The `as` keyword is TypeScript-only; it disappears at runtime.
+* `{ ...object }` — the spread operator inside an object literal copies all fields from `object` into the new object. So `{ ...project1Meta, Component: Project1Component }` creates one object that contains all metadata fields plus the `Component` field.
+
 * `projects.flatMap((p) => p.category)` — iterates over every project and flattens each project's `category` array into one flat list, e.g. `["Category 1", "Category 2", "Category 1", "Category 3"]`. `flatMap` is needed because each project now has an array of categories rather than a single string.
 * `new Set(...)` — a `Set` is a JavaScript data structure that only stores unique values. Passing the array into it automatically removes duplicates, leaving `{"Category 1", "Category 2", "Category 3"}`.
 * `Array.from(...)` — converts the `Set` back into a plain array, because `Set` objects can't be spread or mapped directly in JSX.
@@ -138,7 +145,7 @@ const Projects = () => {
             </section>
             <section className="px-4 py-8">
 
-                {/*TO BE CHANGED"*/}
+                {/* TO BE CHANGED */}
                 <ul className="space-y-2">
                     {projects.map((project) => (
                         // project.slug becomes the URL segment: /projects/[slug]
@@ -354,6 +361,8 @@ export const metadata = {
 ```
 
 The filename must match the slug exactly — `project1.mdx` for slug `project1`, `project2.mdx` for slug `project2`, and so on.
+
+Add your project images to `public/img/projects/` using the same folder structure as the paths in the metadata — for example `public/img/projects/project01/project01-thumb.jpg`. The `public/` folder is served at the root URL, so `src="/img/projects/project01/..."` maps directly to that location on disk.
 
 Because the MDX body is full JSX, you can go beyond plain text. To display images inline at full width — larger than the gallery grid — import `next/image` at the top of the file and place `<Image>` elements directly in the body. The `import` must come before the `export const metadata`.
 

@@ -21,7 +21,7 @@ has_children: false
 * [7. The Home Page](portfolio_tutorial_07_home)
 
 
-## 8. The About Page - Overview
+## 8. The About Page – Overview
 
 The About page serves two purposes: a quick introduction about yourself on first sight, and deeper background, e.g. your CV, grants, publications, for those want to know more about you.
 
@@ -120,7 +120,7 @@ const About = () => {
             <HeroSectionTextImage
                 title="[Your Name]"
                 text="[Your personal introduction — interests, practice, professional focus.]"
-                src="/img/portrait.jpg"
+                src="/img/about/portrait.jpg"
                 alt="Portrait of [Your Name]"
                 priority
             />
@@ -132,7 +132,7 @@ const About = () => {
 export default About;
 ```
 
-Add your portrait photo at `public/img/portrait.jpg`. The `public/` folder is served at the root URL — `src="/img/portrait.jpg"` maps directly to that file path on disk.
+Add your portrait photo at `public/img/about/portrait.jpg`. The `public/` folder is served at the root URL — `src="/img/portrait.jpg"` maps directly to that file path on disk.
 
 
 ---
