@@ -21,22 +21,22 @@ has_children: false
 
 ## 6. Navigation
 
-* [Tutorial - A Portfolio Page](#tutorial---a-portfolio-page)
-        * [Previous](#previous)
-    * [6. Navigation](#6-navigation)
-        * [6.1 — Extract The `nav` Into Its Own Component](#61--extract-the-nav-into-its-own-component)
-        * [6.2 — Replace inline classes with named CSS classes](#62--replace-inline-classes-with-named-css-classes)
-            * [6.2.1 aria-label](#621-aria-label)
-        * [6.3 — Add a mobile menu toggle button](#63--add-a-mobile-menu-toggle-button)
-        * [6.4 — The Dropdown Menu](#64--the-dropdown-menu)
-            * [6.4.1 — Close on Escape key](#641--close-on-escape-key)
-            * [6.4.2 —  Close on outside click](#642---close-on-outside-click)
-            * [6.4.3 useState vs. useEffect vs. useRef](#643-usestate-vs-useeffect-vs-useref)
-            * [6.4.4 — Add a chevron icon](#644--add-a-chevron-icon)
-            * [6.4.5 — Refactor: One Link List for Both Menus](#645--refactor-one-link-list-for-both-menus)
-        * [6.5 — A "Say Hi" Button](#65--a-say-hi-button)
-        * [6.5.1 — Integrate Button Into Header.tsx](#651--integrate-button-into-headertsx)
-        * [Next](#next)
+* [6. Navigation](#6-navigation)
+    * [6.1 — Extract The `nav` Into Its Own Component](#61--extract-the-nav-into-its-own-component)
+    * [6.2 — Replace inline classes with named CSS classes](#62--replace-inline-classes-with-named-css-classes)
+        * [6.2.1 aria-label](#621-aria-label)
+    * [6.3 — Add a mobile menu toggle button](#63--add-a-mobile-menu-toggle-button)
+        * [React Hooks (Why you can't just use a JS variable)](#react-hooks-why-you-cant-just-use-a-js-variable)
+    * [6.4 — The Dropdown Menu](#64--the-dropdown-menu)
+        * [6.4.1 — Close on Escape key](#641--close-on-escape-key)
+        * [6.4.2 —  Close on outside click](#642---close-on-outside-click)
+        * [6.4.3 `useState` vs. `useEffect` vs. `useRef`](#643-usestate-vs-useeffect-vs-useref)
+        * [6.4.4 — Add a chevron icon](#644--add-a-chevron-icon)
+        * [6.4.5 — Refactor: One Link List for Both Menus](#645--refactor-one-link-list-for-both-menus)
+    * [6.5 — A "Say Hi" Button](#65--a-say-hi-button)
+    * [6.5.1 — Integrate Button Into Header.tsx](#651--integrate-button-into-headertsx)
+    * [Next](#next)
+
 
 
 The header currently has an inline `<nav>` with links that only appear on desktop. This section makes it fully responsive: a horizontal row on desktop, a dropdown on mobile.
@@ -683,5 +683,6 @@ The header now shows a responsive nav — inline row on desktop, a dropdown on m
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

@@ -22,6 +22,15 @@ has_children: false
 
 ## 7. The Home Page
 
+* [7. The Home Page](#7-the-home-page)
+    * [7.1 Components](#71-components)
+        * [7.1.1 Utility Components](#711-utility-components)
+        * [7.1.2 Combining Components](#712-combining-components)
+    * [7.2 Putting the Components on the Home Page](#72-putting-the-components-on-the-home-page)
+    * [7.3 Styling](#73-styling)
+    * [Next](#next)
+
+
 As of now home page has three sections stacked vertically (of course you can change that eventually):
 
 1. A short intro sentence
@@ -288,5 +297,6 @@ The home page is now complete. Later we could replace the HeroImage with a shade
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

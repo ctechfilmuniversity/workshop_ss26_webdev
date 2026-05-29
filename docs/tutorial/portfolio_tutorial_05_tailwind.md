@@ -20,6 +20,18 @@ has_children: false
 
 ## 5. Tailwind CSS
 
+* [5. Tailwind CSS](#5-tailwind-css)
+    * [5.1 How Tailwind v4 Works](#51-how-tailwind-v4-works)
+    * [5.2 globals.css](#52-globalscss)
+    * [5.3 Tailwind Layers](#53-tailwind-layers)
+    * [5.4 Add Tailwind Styling for Spacing](#54-add-tailwind-styling-for-spacing)
+        * [5.4.1 What each class does in this example](#541-what-each-class-does-in-this-example)
+    * [5.5 Responsive Design in Tailwind](#55-responsive-design-in-tailwind)
+    * [5.5 Update globals.css with Header/Footer Styles](#55-update-globalscss-with-headerfooter-styles)
+        * [5.5.1 Apply Tailwind New Classes](#551-apply-tailwind-new-classes)
+    * [Next](#next)
+
+
 ### 5.1 How Tailwind v4 Works
 
 `create-next-app` already set up Tailwind. Two things happened:
@@ -305,5 +317,6 @@ The site should now display a styled sticky header and footer. The navigation is
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

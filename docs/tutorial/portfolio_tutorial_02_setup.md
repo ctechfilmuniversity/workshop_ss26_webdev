@@ -17,6 +17,17 @@ has_children: false
 
 ## 2. Project Setup
 
+* [2. Project Setup](#2-project-setup)
+    * [2.1 Installing Node.js](#21-installing-nodejs)
+    * [2.2 Creating the Project](#22-creating-the-project)
+    * [2.3 The Generated File Structure](#23-the-generated-file-structure)
+    * [2.4 Cleaning Up the Defaults](#24-cleaning-up-the-defaults)
+    * [2.5 Prettier](#25-prettier)
+    * [2.6 TypeScript Configuration](#26-typescript-configuration)
+    * [2.7 React DevTools](#27-react-devtools)
+    * [Next](#next)
+
+
 ### 2.1 Installing Node.js
 
 
@@ -284,5 +295,6 @@ This is valuable for debugging. When something looks wrong on screen, open DevTo
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

@@ -23,6 +23,13 @@ has_children: false
 
 ## 8. The About Page – Overview
 
+* [8. The About Page – Overview](#8-the-about-page--overview)
+    * [8.1 TextImageBox Component](#81-textimagebox-component)
+    * [8.2 HeroSectionTextImage Component](#82-herosectiontextimage-component)
+    * [8.3 Putting It Together](#83-putting-it-together)
+    * [Next](#next)
+
+
 The About page serves two purposes: a quick introduction about yourself on first sight, and deeper background, e.g. your CV, grants, publications, for those want to know more about you.
 
 For that, the page has two visual sections:
@@ -146,5 +153,6 @@ Add your portrait photo at `public/img/about/portrait.jpg`. The `public/` folder
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

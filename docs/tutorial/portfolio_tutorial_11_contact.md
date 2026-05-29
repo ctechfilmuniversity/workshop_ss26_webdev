@@ -26,6 +26,10 @@ has_children: false
 
 ## 11. Contact
 
+* [11. Contact](#11-contact)
+    * [Next](#next)
+
+
 The contact page uses icons from [Lucide React](https://lucide.dev/). Lucide React is an open-source icon library that provides icons as React components. Instead of managing SVG files manually or using an icon font, you import individual icons directly:
 
 `import { ChevronDown } from "lucide-react";`
@@ -122,5 +126,6 @@ export default Contact;
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

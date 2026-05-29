@@ -27,23 +27,61 @@ has_children: false
 
 ## 12. Projects
 
-The Projects section has three parts that work together:
+* [12. Projects](#12-projects)
+    * [12.1 Data Layer](#121-data-layer)
+    * [12.2 Listing Page Skeleton](#122-listing-page-skeleton)
+    * [12.3 Detail Page Skeleton](#123-detail-page-skeleton)
+    * [12.4 ProjectCard](#124-projectcard)
+    * [12.5 Project Page with ProjectCards](#125-project-page-with-projectcards)
+    * [12.6 Project MDX Content Files](#126-project-mdx-content-files)
+    * [12.7 ProjectImageGallery](#127-projectimagegallery)
+    * [12.8 Project Detail Page](#128-project-detail-page)
+    * [12.9 Category Filtering](#129-category-filtering)
+    * [12.10 Verify the Build](#1210-verify-the-build)
+    * [Next](#next)
 
-**A listing page** (`/projects`) that shows all projects as cards. The page itself is a Server Component — it reads the data at build time. Interactive category filtering is handled by a separate Client Component that the listing page renders as a child.
 
-**Dynamic detail pages** (`/projects/[slug]`) — one page per project, pre-generated at build time. `generateStaticParams` tells Next.js which slugs exist so it can render one HTML file per project. Each detail page displays an intro image and text from the data layer, plus longer written content from an MDX file.
+
+The Projects section has three parts that are interconnected:
+
+**A listing page** (`/projects`) that shows previews for all projects, called cards. The page itself is a Server Component — it reads the data at build time. Interactive category filtering is handled by a separate Client Component that the listing page renders as a child.
+
+**Dynamic detail pages** (`/projects/[slug]`) — one page per project, pre-generated at build time. `generateStaticParams` tells Next.js which slugs (dynamic URLs) exist so it can render one HTML file per project. Each detail page displays an intro image and text at top and a four-image grid at the bottom, plus longer written content from an MDX file in-between.
 
 **Shared components**: `ProjectCard` (thumbnail, description, and link — used in the listing grid) and `ProjectImageGallery` (an asymmetric four-image grid — used in each detail page).
 
 The data flows like this: `app/(routes)/projects/projects.ts` is the single source of truth. The listing page reads `projects` and `categories` from it and passes them to `ProjectCategoryFilter`. The detail page reads `projects` to find the current project by slug and renders the matching MDX component directly from the project object.
 
-We build this in layers: first get both routes working with minimal placeholder content so you can verify the navigation, then fill each page with its full components, and add category filtering last.
+We build this step by step: first get both routes working with minimal placeholder content so you can verify the navigation, then fill each page with its full components, and add category filtering last.
 
 ### 12.1 Data Layer
 
-Each project lives entirely in a single MDX file — all structured data (title, slug, category, images) is exported as `metadata`, and the long-form prose content (Context, Process, Results) is the body of the file. `projects.ts` imports from these MDX files and assembles the `projects` array. This way there is only one file to edit per project.
+Each project lives entirely in a single MDX file, which might look as follows (here for your information only, we will work with the `.mdx` files only later in this chapter):
 
-*On a Side Note*: The About MDX files work differently — they export only a title and have no structured data. Projects need richer metadata because the listing page, the category filter, and the detail page all read different fields from the same project object.
+```mdx
+export const metadata = {
+    slug: 'project1',
+    title: 'Project 1',
+    category: ['Category 1'],
+    thumbnail: '/img/projects/project01/thumb.jpg',
+    // ... more structured data fields
+}
+
+## Context
+
+[Free-form prose content here.]
+
+## Process
+
+[More prose...]
+```
+
+The `export const metadata` block at the top is JavaScript and it exports the structured data. Everything below is Markdown that becomes the rendered page body.
+
+All structured data is exported as `metadata`, and the long-form prose content (e.g. Context, Process, Results) is the body of the file. Structured data means named fields with fixed types (like `title`, `slug`, `category`, and image paths), hence data that code can reliably access by field name, as opposed to free-form written text. `projects.ts` imports from these MDX files and assembles the `projects` array. This way there is only one file to edit per project.
+
+*On a Side Note*: The About MDX files work differently — they export only a `title` and have no structured data. Projects need richer metadata because the listing page, the category filter, and the detail page all read different fields from the same project object.
+
 
 **`app/(routes)/projects/projects.ts`**:
 ```ts
@@ -124,11 +162,11 @@ The final result is something like `["All", "Category 1", "Category 2", "Categor
 
 The `/** ... */` JSDoc comments appear as tooltips in VS Code when you hover over a field name anywhere in the project.
 
-*On a Side Note*: This setup works well for a portfolio of up to around 20–30 projects. Because `projects.ts` imports every MDX file upfront, all MDX components end up in the JavaScript bundle of every page that imports from `projects.ts` — even the listing page, which never renders any of them. For a small portfolio this overhead is negligible. If the project count grows significantly, the better approach is to split the data back out: keep only plain serialisable fields (slug, title, category, thumbnail, description, introText, introImage, galleryImages) in `projects.ts` as plain objects, and move the MDX content to a separate `contentMap` in the detail page that maps each slug to its imported component. The listing page then only loads the lightweight metadata; each MDX component is only bundled with the detail page that actually uses it.
+*On a Side Note*: This setup works well for a portfolio of up to around 20–30 projects. Because `projects.ts` imports every MDX file in full and with that both the metadata and the compiled prose component, the prose content of all projects ends up in the JavaScript bundle of every page that imports from `projects.ts`, including in the listing page, which only needs the metadata and never renders any of the prose. For a small portfolio this overhead is negligible. If the project count grows significantly, the better approach is to split the data back out: keep only plain serialisable fields (slug, title, category, thumbnail, description, introText, introImage, galleryImages) in `projects.ts` as plain objects, and move the MDX content to a separate `contentMap` in the detail page that maps each slug to its imported component. The listing page then only loads the lightweight metadata; each MDX component is only bundled with the detail page that actually uses it.
 
 ### 12.2 Listing Page Skeleton
 
-Before building any components, get the routing working with the simplest possible output — a plain list of project titles as links. This confirms that the data layer is wired up and that clicking a project navigates to the right URL.
+Before building any components, get the routing working with the simplest possible output for now, just a plain list of project titles as links. This confirms that the data layer is wired up and that clicking a project navigates to the right URL.
 
 **`app/(routes)/projects/page.tsx`**:
 ```tsx
@@ -173,6 +211,8 @@ Before adding any content components, let's confirm that the dynamic route works
 
 The following page file does two things. First, it tells Next.js which pages to generate at build time via `generateStaticParams` — without this, Next.js would not know which slugs exist and could not pre-render the detail pages. Second, it renders the page for a given slug by reading that slug from params and looking up the matching project in the data.
 
+The following `page.tsx` contains advanced code (promises) and structure (asynchronous execution) and understanding it is not necessarily active knowledge you need at this point. While I encourage any learning and understanding that you do, the following code is on a level that you could skip to fully understand (again please work though it in detail, if you are up to it 🤓).
+
 
 **`app/(routes)/projects/[slug]/page.tsx`**:
 ```tsx
@@ -215,16 +255,16 @@ const ProjectPage = async ({ params }: Props) => {
 export default ProjectPage;
 ```
 
-Open the listing page in the browser, click a project title, and confirm you land on a page showing its title and category. The routing is verified — now we fill in the details.
+Open the listing page in the browser, click a project title, and confirm you land on a page showing its title and category. The routing is (hopefully) verified, now we fill in the details.
 
 Dynamic Routing
-* params is how Next.js passes the dynamic segment value into your page component. When a visitor opens /projects/project1, Next.js resolves params.slug to "project1" and passes it in. In Next.js 15 and later, params is a Promise — a value that is not available immediately but will be ready shortly. Marking the component async and using await tells JavaScript to pause and wait for the Promise to resolve before continuing. Once the slug is available, projects.find(...) looks up the matching entry in the data array — if nothing matches, notFound() triggers the 404 page.
-* Projects are accessed with a `[slug]` URL, which varies per project as `[slug]` is Next.js file-system routing syntax for a dynamic segment. A file at app/(routes)/projects/[slug]/page.tsx matches any URL of the form /projects/anything. The value of anything is captured and passed into the page component as params.slug. So /projects/project1 gives slug = "project1", and /projects/project2 gives slug = "project2". One file handles all project detail pages — the slug is what distinguishes them. The square brackets are the convention Next.js uses to signal "this segment is a variable, not a literal folder name."
+* `params` is how Next.js passes the dynamic segment value into your page component. When a visitor opens `/projects/project1`, Next.js resolves `params.slug` to `"project1"` and passes it in. In Next.js 15 and later, `params` is a Promise, which is a value that is not available immediately but will be ready at some point. Marking the component `async` and using `await` tells JavaScript to pause and wait for the Promise to resolve before continuing. Once the slug is available, `projects.find(...)` looks up the matching entry in the data array and if nothing matches, `notFound()` triggers the 404 page.
+* Projects are accessed with a `[slug]` URL, which varies per project as `[slug]` is Next.js file-system routing syntax for a dynamic segment. A file at `app/(routes)/projects/[slug]/page.tsx` matches any URL of the form `/projects/anything`. The value of `anything` is captured and passed into the page component as `params.slug`. So `/projects/project1` gives `slug = "project1"`, and `/projects/project2` gives `slug = "project2"`. One file handles all project detail pages — the slug is what distinguishes them. The square brackets are the convention Next.js uses to signal "this segment is a variable, not a literal folder name."
 
-Asynchrony
-* Normally a React component is a regular function that runs synchronously and with that it executes top to bottom and returns JSX immediately. Adding `async`, as done here, means the function can pause mid-execution to wait for something, for a promise specifically. This is necessary here because in Next.js 15, params is a Promise by design — Next.js hands it to you as a Promise rather than a plain object, so you must await it before you can read the slug value.
-* With making params a Promise, Next.js 15 supports a feature called partial prerendering — the ability to start streaming a page to the browser before all dynamic values are known. If params were a plain object, the component would have to wait for the routing to fully resolve before it could start rendering at all. By making it a Promise, Next.js can begin executing the component and only pause at the exact point where await params appears.
-* However, with output: "export", all pages are pre-generated at build time and served as plain HTML files anyway. There is no server, no streaming, and no runtime routing — so the Promise design brings no practical benefit here. However, Next.js uses the same page component API regardless of whether you are building a static site, a server-rendered app, or a streaming app. Rather than having different rules depending on your output mode, Next.js standardises on the Promise-based params everywhere, so your code works the same way across all setups.
+Asynchronous Execution
+* Normally a React component is a regular function that runs synchronously and with that it executes top to bottom and returns JSX immediately. Adding `async`, as done here, means the function can pause mid-execution to wait for something, for a promise to resolve specifically. This is necessary here because in Next.js 15, `params` is a Promise by design. Next.js hands `params` to you as a Promise rather than a plain object, so you must `await` it before you can read the `slug` value.
+* With making `params` a Promise, Next.js 15 supports a feature called partial prerendering, which is the ability to start streaming a page to the browser before all dynamic values are known. If `params` were a plain object, the component would have to wait for the routing to fully resolve before it could start rendering at all. By making it a Promise, Next.js can begin executing the component and only pause at the exact point where `await params` appears.
+* However, with `output: "export"`, all pages are pre-generated at build time and served as plain HTML files anyway. There is no server, no streaming, and no runtime routing, so the Promise design brings no practical benefit here! Nothing we can do about, as Next.js uses the same page component API regardless of whether you are building a static site, a server-rendered app, or a streaming app. Rather than having different rules depending on your output mode, Next.js standardises on the Promise-based `params` everywhere, so your code works the same way across all setups.
 
 
 
@@ -305,7 +345,7 @@ const Projects = () => {
             </section>
             <section className="px-4 py-8">
 
-                {/* CHANGE */}
+                {/* CHANGE: */}
                 {/* 2-column grid on sm+, single column on mobile */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
                     {projects.map((project) => (
@@ -324,7 +364,7 @@ export default Projects;
 
 Each project is a single MDX file that contains both all structured data as `metadata` and the long-form prose content as the body. Create the folder `app/(routes)/projects/[slug]/content/` and add one file per project.
 
-The `metadata` export must match the `ProjectMetadata` type defined in `projects.ts` — every field is required.
+The `metadata` export must match the `ProjectMetadata` type defined in `projects.ts`, hence every field is required!
 
 **`app/(routes)/projects/[slug]/content/project1.mdx`**:
 
@@ -332,32 +372,35 @@ The `metadata` export must match the `ProjectMetadata` type defined in `projects
 export const metadata = {
     slug: 'project1',
     title: 'Project 1',
-    category: ['Category 1'],
+    category: ['category 1'],
     thumbnail: '/img/projects/project01/project01-thumb.jpg',
-    thumbnailAlt: '[Description]',
-    description: '[One or two sentences shown below the thumbnail.]',
-    introText: '[Intro paragraph shown on the detail page alongside the image.]',
+    thumbnailAlt: '[Description 1]',
+    description: '[One or two sentences for Project 1.]',
+    introText: '[Longer intro for the detail page for Project 1.]',
     introImage: '/img/projects/project01/project01-intro.jpg',
-    introImageAlt: '[Description]',
+    introImageAlt: '[Description for Project 1]',
     galleryImages: [
-        { src: '/img/projects/project01/project01-01.jpg', alt: '[Caption]' },
-        { src: '/img/projects/project01/project01-02.jpg', alt: '[Caption]' },
-        { src: '/img/projects/project01/project01-03.jpg', alt: '[Caption]' },
-        { src: '/img/projects/project01/project01-04.jpg', alt: '[Caption]' },
+        { src: '/img/projects/project01/project01-01.jpg', alt: '[Caption Project 1]' },
+        { src: '/img/projects/project01/project01-02.jpg', alt: '[Caption Project 1]' },
+        { src: '/img/projects/project01/project01-03.jpg', alt: '[Caption Project 1]' },
+        { src: '/img/projects/project01/project01-04.jpg', alt: '[Caption Project 1]' },
     ],
 }
 
+
+{/* The following part can be completely individualized per project */}
+
 ## Context
 
-[Conceptual context for this project. What question or impulse motivated it?]
+[Conceptual context for project 1. What question or impulse motivated it?]
 
 ## Process
 
-[Methods, tools, and workflow you used.]
+[Methods, tools, and workflow you used for project 1.]
 
 ## Results
 
-[Result, exhibition, publication, or insight.]
+[Result, exhibition, publication, or insight for project 1.]
 ```
 
 The filename must match the slug exactly — `project1.mdx` for slug `project1`, `project2.mdx` for slug `project2`, and so on.
@@ -390,9 +433,155 @@ export const metadata = {
 
 `width` and `height` tell Next.js the intrinsic dimensions of the source file so it can calculate the aspect ratio — they do not control the display size. `className="w-full h-auto"` makes the image stretch to the full width of the article container while preserving its proportions.
 
+**`app/(routes)/projects/[slug]/content/project2.mdx`**:
+```mdx
+export const metadata = {
+    slug: 'project2',
+    title: 'Project 2',
+    category: ['category 2'],
+    thumbnail: '/img/projects/project02/project02-thumb.jpg',
+    thumbnailAlt: '[Description 1]',
+    description: '[One or two sentences for Project 2.]',
+    introText: '[Longer intro for the detail page for Project 2.]',
+    introImage: '/img/projects/project02/project02-intro.jpg',
+    introImageAlt: '[Description for Project 2]',
+    galleryImages: [
+        { src: '/img/projects/project02/project02-01.jpg', alt: '[Caption Project 2]' },
+        { src: '/img/projects/project02/project02-02.jpg', alt: '[Caption Project 2]' },
+        { src: '/img/projects/project02/project02-03.jpg', alt: '[Caption Project 2]' },
+        { src: '/img/projects/project02/project02-04.jpg', alt: '[Caption Project 2]' },
+    ],
+}
+
+
+{/* The following part can be completely individualized per project */}
+
+{/* Self-hosted Video Embedding */}
+{/* Videos should be <= 10MB */}
+<video
+    src="/img/projects/project02/DemoReel_Final_Small.mp4"
+    controls
+    className="w-full h-auto rounded-sm"
+/>
+
+{/* Vimeo embed — replace the video ID in the URL with your own */}
+<div className="relative w-full aspect-video">
+    <iframe
+        src="https://player.vimeo.com/video/1196623030"
+        className="absolute inset-0 w-full h-full rounded-sm"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+    />
+</div>
+
+[Description for project 2]
+```
+
+`project2.mdx` demonstrates two video embedding options: a self-hosted MP4 using a plain `<video>` element, and a Vimeo embed using an `<iframe>`. Both are placed directly in the MDX body as JSX. Replace the video `src` and the Vimeo URL with your own.
+
+*On a Side Note:* Videos
+
+For web video, these are the practical guidelines:
+
+File size
+* Under 10 MB is ideal for a portfolio detail page
+* Up to 20–30 MB is acceptable if the video is the centrepiece of the project
+* Above that, self-hosting becomes painful as it will load slowly, without adaptive streaming
+
+Format and compression
+Use MP4 with H.264 as the baseline as every browser supports it. If you want smaller files at the same quality, add an MP4 with H.265 (HEVC) or WebM with VP9 as a preferred source:
+
+<video controls className="w-full h-auto rounded-sm">
+    <source src="/img/projects/project02/project02.webm" type="video/webm" />
+    <source src="/img/projects/project02/project02.mp4"  type="video/mp4" />
+</video>
+The browser picks the first format it supports (but you can also have only one of the above files). 
+
+Practical settings in Handbrake or FFmpeg
+* Resolution: 1080p max, 720p is usually enough for a portfolio clip
+* CRF 23–28 for H.264 (lower = better quality, larger file)
+* CRF 28–33 for H.265
+* Frame rate: match the source, cap at 30fps if it was shot at 60
+* Audio: AAC 128kbps, or strip audio if it has none
+  
+
+Examplary compression command with ffmpeg:
+```bash
+ffmpeg -i input.mp4 -c:v libx264 -crf 28 -preset slow -vf "scale='min(iw,1080)':-2" -c:a aac -b:a 128k output.mp4
+```
+
+* `-i input.mp4` — input file
+* `-c:v libx264` — encode video with the H.264 codec
+* `-crf 28` — quality level: 0 (lossless) to 51 (worst); 28 is a good web balance between quality and file size
+* `-preset slow` — encoding speed: slower presets compress more efficiently, resulting in a smaller file at the same quality; options range from `ultrafast` to `veryslow`
+* `-vf "scale='min(iw,1080)':-2"` — video filter: scale the width to at most 1080px; `min(iw,1080)` means "use the original width if it is already smaller than 1080, otherwise cap at 1080"; `-2` calculates the height automatically and keeps it divisible by 2 (required by H.264)
+* `-c:a aac` — encode audio with the AAC codec, the standard for MP4
+* `-b:a 128k` — audio bitrate: 128 kbps, sufficient quality for speech and music
+* `output.mp4` — output file name
+
+
+If the video is long or large (documentary, reel), I highly recommend to upload it to Vimeo instead and embed with an iframe. Vimeo handles compression, CDN delivery, and adaptive streaming for you, and the Vimeo free tier allows private embeds.
+
+Vimeo's free tier has 5 GB total storage, a basic player without ads but only limited privacy controls (we want a public link anyway) and a Vimeo branding on the player. If you have many large videos, the paid tiers are worth considering.
+
+YouTube is also free with no storage limit and no branding on embeds, but videos are public and indexed by Google, which is not ideal if you want to control who sees your work.
+
+You embed a Vimeo video in the `.mdx` file with:
+
+```js
+{/* Vimeo embed — replace 000000000 with your video ID from the Vimeo URL */}
+{/* and make sure that the video is set to public */}
+<div className="relative w-full aspect-video">
+    <iframe
+        src="https://player.vimeo.com/video/000000000"
+        className="absolute inset-0 w-full h-full rounded-sm"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+    />
+</div>
+```
+
+
+
+
+**`app/(routes)/projects/[slug]/content/project3.mdx`**:
+```mdx
+import Image from 'next/image';
+
+export const metadata = {
+    slug: 'project3',
+    title: 'Project 3',
+    category: ['category 1', 'category 3'],
+    thumbnail: '/img/projects/project03/project03-thumb.jpg',
+    thumbnailAlt: '[Description 1]',
+    description: '[One or two sentences for Project 3.]',
+    introText: '[Longer intro for the detail page for Project 3.]',
+    introImage: '/img/projects/project03/project03-intro.jpg',
+    introImageAlt: '[Description for Project 3]',
+    galleryImages: [
+        { src: '/img/projects/project03/project03-01.jpg', alt: '[Caption Project 3]' },
+        { src: '/img/projects/project03/project03-02.jpg', alt: '[Caption Project 3]' },
+        { src: '/img/projects/project03/project03-03.jpg', alt: '[Caption Project 3]' },
+        { src: '/img/projects/project03/project03-04.jpg', alt: '[Caption Project 3]' },
+    ],
+}
+
+{/* The following part can be completely individualized per project */}
+
+<Image src="/img/projects/project03/project03-thumb.jpg" alt="[Caption for image 1]" width={1600} height={1067} className="w-full h-auto" />
+
+[Some other text for project 3.]
+
+<Image src="/img/projects/project03/project03-02.jpg" alt="[Caption for image 2]" width={1600} height={1067} className="w-full h-auto" />
+
+[Result, exhibition, publication, or insight for project 3.]
+```
+
+Note that `project3.mdx` also shows a different content structure with no fixed headings, just inline images mixed with text, to illustrate that the body is free-form and can be arranged however suits the project.
+
 ### 12.7 ProjectImageGallery
 
-ProjectImageGallery receives an array of four images. On small screens the images stack in a single column; on `sm+` they switch to an asymmetric grid where the first image spans two rows:
+`ProjectImageGallery` receives an array of four images. On small screens the images stack in a single column; on `sm+` they switch to an asymmetric grid where the first image spans two rows:
 
 ```
 mobile               sm+
@@ -475,7 +664,9 @@ export default ProjectImageGallery;
 
 ### 12.8 Project Detail Page
 
-Now fill in the detail page with the intro image, intro text, MDX body, and gallery. The intro section reuses `TextImageBox` — the same float-based image and text layout already used on the About page. Because each project object already carries its own `Component` (imported from its MDX file via `projects.ts`), there is no `contentMap` needed — we simply destructure `Component` from the matched project and render it.
+Now we fill in the detail page with the intro image, intro text, MDX body, and gallery (these are design choices that you can eventually change up to your liking). The intro section reuses `TextImageBox`, which is the same float-based image and text layout already used on the About page. Because each project object already carries its own `Component` (imported from its MDX file via `projects.ts`), there is no `contentMap` needed — we simply destructure `Component` from the matched project and render it.
+
+
 
 **`app/(routes)/projects/[slug]/page.tsx`**:
 ```tsx
@@ -553,9 +744,9 @@ export default ProjectPage;
 
 ### 12.9 Category Filtering
 
-For the time when we have dozens of projects, we would like to have some filtering based on categories.
+For the scenario when we have dozens of projects, we would like to have some filtering based on categories. Also the categories give a nice overview of your topics.
 
-For that we add a Client Component (`ProjectCategoryFilter`) that manages the active category and re-renders the grid when it changes. We need a Client Component here, as we have interactivity that can not be "pre-processed". The filtering by category requires state that responds to user clicks. This is a reason to reach for a Client Component. `ProjectCategoryFilter` handles exactly that, while the listing page itself stays a Server Component, which loads the data and passes it down.
+For the filtering we add a Client Component (`ProjectCategoryFilter`) that manages the active category and re-renders the grid when it changes. We need a Client Component here, as we have interactivity that can not be "pre-computed". The filtering by category requires a state that responds to user clicks. This is a reason to reach for a Client Component. `ProjectCategoryFilter` handles exactly that, while the listing page itself stays a Server Component, which loads the data and passes it down.
 
 
 **`app/components/ProjectCategoryFilter.tsx`**:
@@ -617,10 +808,10 @@ Now update the listing page to pass both the project list and the category list 
 ```tsx
 import HeroTitle from '@/app/components/HeroTitle';
 
-// CHANGE
+// CHANGE:
 import { projects, categories } from './projects';
 
-// ADD
+// ADD:
 import ProjectCategoryFilter from '@/app/components/ProjectCategoryFilter';
 
 // Server Component — reads project data at build time, passes it to the client filter
@@ -692,5 +883,6 @@ If the build fails, Next.js prints the file and line number. Common issues at th
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

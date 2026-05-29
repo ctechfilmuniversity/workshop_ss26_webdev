@@ -29,6 +29,12 @@ has_children: false
 
 ## 14. Summary
 
+* [14. Summary](#14-summary)
+* [14.1 The Complete File Structure](#141-the-complete-file-structure)
+    * [14.2 What to Personalise](#142-what-to-personalise)
+    * [Next](#next)
+
+
 ## 14.1 The Complete File Structure
 
 After all steps:
@@ -116,5 +122,6 @@ Replace every `[bracket]` placeholder before publishing:
 ### Next
 
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

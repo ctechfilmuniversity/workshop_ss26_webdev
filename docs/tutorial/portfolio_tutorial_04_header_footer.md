@@ -19,6 +19,16 @@ has_children: false
 
 ## 4. Header and Footer
 
+* [4. Header and Footer](#4-header-and-footer)
+    * [4.1 Header](#41-header)
+        * [4.1.1 Header — Plain HTML First](#411-header--plain-html-first)
+        * [4.1.2 Wire the Header into the Layout](#412-wire-the-header-into-the-layout)
+    * [4.2 Footer](#42-footer)
+        * [4.2.1 Footer — Plain HTML First](#421-footer--plain-html-first)
+        * [4.2.2 Footer Content](#422-footer-content)
+    * [Next](#next)
+
+
 We will build the header and footer in two steps: first as plain HTML with no styling, so the structure is clear and the site compiles. Then we add Tailwind classes.
 
 ### 4.1 Header
@@ -157,5 +167,6 @@ The middle line uses Tailwind utility classes directly — `text-gray-500 text-x
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

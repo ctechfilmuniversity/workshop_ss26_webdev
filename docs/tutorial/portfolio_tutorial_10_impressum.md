@@ -25,6 +25,10 @@ has_children: false
 
 ## 10. Impressum
 
+* [10. Impressum](#10-impressum)
+    * [Next](#next)
+
+
 German law requires websites to display a legal notice (Impressum).  
 
 **`app/(routes)/impressum/page.tsx`**:
@@ -89,5 +93,6 @@ Create a small screenshot of your email address (approximately 200–250 px wide
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

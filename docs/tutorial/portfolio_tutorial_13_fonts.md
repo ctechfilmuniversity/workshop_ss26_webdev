@@ -28,6 +28,14 @@ has_children: false
 
 ## 13. Fonts
 
+* [13. Fonts](#13-fonts)
+    * [13.1 Loading Fonts](#131-loading-fonts)
+    * [13.2 Load the Font in \`layout.tsx](#132-load-the-font-in-layouttsx)
+    * [13.3 Add Font Variables to `globals.css`](#133-add-font-variables-to-globalscss)
+    * [13.4 Additional Fonts](#134-additional-fonts)
+    * [Next](#next)
+
+
 With a simplified layout and large texts like the one on this page, fonts do matter. Hence in the following, we setup the code for being able to use different fonts.  
   
 The font setup has two parts. First, Next.js loads the font files and exposes them as CSS custom properties. Second, `globals.css` assigns those properties to semantic aliases (`--font-headers`, `--font-body`) that the rest of the stylesheet uses. This two-step approach means switching fonts later only requires changing one small block in `globals.css`, nothing else needs to change.
@@ -187,5 +195,6 @@ Everything that uses `--font-headers` updates automatically.
 
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

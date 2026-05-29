@@ -13,6 +13,18 @@ has_children: false
 
 ## 1. Tech Stack
 
+* [1. Tech Stack](#1-tech-stack)
+    * [1.1 Static vs. Dynamic Websites](#11-static-vs-dynamic-websites)
+    * [1.2 npm and Node.js](#12-npm-and-nodejs)
+    * [1.3 Next.js](#13-nextjs)
+    * [1.4 React](#14-react)
+    * [1.5 TypeScript](#15-typescript)
+        * [1.5.1  Custom Types For Component Props](#151--custom-types-for-component-props)
+    * [1.6 Tailwind CSS](#16-tailwind-css)
+    * [1.7 MDX](#17-mdx)
+    * [Next](#next)
+
+
 
 ### 1.1 Static vs. Dynamic Websites
 
@@ -195,5 +207,6 @@ More text continues normally.
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

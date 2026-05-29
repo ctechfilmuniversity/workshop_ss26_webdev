@@ -141,13 +141,14 @@ html:focus-within {
 
     .site-header {
         /* sticky: stays visible at the top when the user scrolls */
-        /* backdrop-blur: frosted-glass effect when content scrolls under it */
+        /* bg-white/10 + backdrop-blur-md: frosted glass that works over both
+           the dark shader on home and white backgrounds on other pages */
         @apply sticky top-0 z-50 flex items-center justify-between
-               bg-white/80 backdrop-blur;
+               bg-white/10 backdrop-blur-md;
     }
 
     .site-footer {
-        @apply border-t border-gray-300 bg-white;
+        @apply border-t border-white/20 bg-transparent;
     }
 
     .site-footer p {

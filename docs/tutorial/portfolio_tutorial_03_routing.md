@@ -18,6 +18,17 @@ has_children: false
 
 ## 3. Routing
 
+* [3. Routing](#3-routing)
+    * [3.1 What Is Routing?](#31-what-is-routing)
+    * [3.2 File-System Routing in Next.js](#32-file-system-routing-in-nextjs)
+    * [3.3 layout.tsx Skeleton](#33-layouttsx-skeleton)
+    * [3.4 Route Groups](#34-route-groups)
+    * [3.5 Dynamic Routes](#35-dynamic-routes)
+    * [3.6 Server and Client Components](#36-server-and-client-components)
+    * [3.7 Creating All Page Stubs](#37-creating-all-page-stubs)
+    * [Next](#next)
+
+
 ### 3.1 What Is Routing?
 
 A website with multiple pages needs a way to decide: "when the user visits `/about`, show the About page." That decision is made by a **router**.
@@ -198,5 +209,6 @@ app/
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

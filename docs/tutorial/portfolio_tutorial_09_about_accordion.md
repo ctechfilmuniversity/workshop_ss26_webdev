@@ -24,6 +24,24 @@ has_children: false
 
 ## 9. The About Page - Details in an Accordion Stack
 
+* [9. The About Page - Details in an Accordion Stack](#9-the-about-page---details-in-an-accordion-stack)
+    * [9.1 Installing MDX Support](#91-installing-mdx-support)
+        * [9.1.1 Configuring next.config.ts](#911-configuring-nextconfigts)
+        * [9.1.2 mdx-components.tsx](#912-mdx-componentstsx)
+        * [9.1.3 mdx.d.ts — Type Declarations](#913-mdxdts--type-declarations)
+        * [9.1.4 Typography Plugin](#914-typography-plugin)
+    * [9.2 The MDX Files](#92-the-mdx-files)
+    * [9.3 The Accordion](#93-the-accordion)
+        * [9.3.1 The AccordionEntry Skeleton](#931-the-accordionentry-skeleton)
+        * [9.3.2 The Toggle Button](#932-the-toggle-button)
+        * [9.3.3 AccordionAbout Skeleton](#933-accordionabout-skeleton)
+        * [9.3.4 Update the About Page](#934-update-the-about-page)
+        * [9.3.5 Load MDX data into AccordionAbout](#935-load-mdx-data-into-accordionabout)
+        * [9.3.6 Style the Content Area](#936-style-the-content-area)
+        * [9.3.7 Responsive Table Styles](#937-responsive-table-styles)
+    * [Next](#next)
+
+
 So far, every page in this project has its content written directly in TypeScript — as strings passed to components as props, or as JSX elements. That works fine for short, stable text. But a CV is different: it is long, structured, and changes regularly. Writing and maintaining it as JSX would be tedious.
 
 This is where **MDX** comes in. MDX is a file format that lets you write content in plain **Markdown**, meaning in the same lightweight syntax used in README files and documentation. The difference is that MDX also understands JSX, so you can embed React components wherever you need them. This means your content stays readable and easy to edit, while React components handle the structure wherever you need it.
@@ -645,5 +663,6 @@ On small screens, tables with many columns no longer fit side-by-side. Add the f
 * [13. Fonts](portfolio_tutorial_13_fonts)
 * [14. Summary](portfolio_tutorial_14_summary)
 * [15. Build and Deploy](portfolio_tutorial_15_deploy)
-* [16. References and Links](portfolio_tutorial_16_references)
+* [16. The Landing Page](portfolio_tutorial_16_landingpage)
+* [17. References and Links](portfolio_tutorial_17_references)
 

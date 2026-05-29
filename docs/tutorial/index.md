@@ -27,4 +27,4 @@ Files & Data:
 
 ---
   
-> Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted. Claude was instructed to draw from the official documentation of all technologies used and those (also see [16. References](./portfolio_tutorial_16_references.md)) should be considered reference material throughout.
+> Claude and Claude Code assisted with code and text generation. All concept, structure, and content decisions were made solely by me. Generated material was reviewed and thoroughly adjusted. Claude was instructed to draw from the official documentation of all technologies used and those (also see [17. References](./portfolio_tutorial_17_references.md)) should be considered reference material throughout.

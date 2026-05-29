@@ -19,14 +19,25 @@ export const metadata = {
 
 {/* The following part can be completely individualized per project */}
 
-## Context
+{/* Self-hosted Video Embedding */}
+{/* Videos should be <= 10MB */}
+<video
+    src="/img/projects/project02/DemoReel_Final_Small.mp4"
+    controls
+    className="w-full h-auto rounded-sm"
+/>
 
-[Conceptual context for project 2. What question or impulse motivated it?]
+{/* Vimeo embed — replace 000000000 with your video ID from the Vimeo URL */}
+{/* and make sure that the video is set to public */}
+<div className="relative w-full aspect-video">
+    <iframe
+        src="https://player.vimeo.com/video/1196623030"
+        className="absolute inset-0 w-full h-full rounded-sm"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+    />
+</div>
 
-## Process
 
-[Methods, tools, and workflow you used for project 2.]
 
-## Results
-
-[Result, exhibition, publication, or insight for project 2.]
+[Description for project 2]
