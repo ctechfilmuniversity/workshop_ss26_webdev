@@ -42,9 +42,9 @@ has_children: false
     * [Next](#next)
 
 
-So far, every page in this project has its content written directly in TypeScript — as strings passed to components as props, or as JSX elements. That works fine for short, stable text. But a CV is different: it is long, structured, and changes regularly. Writing and maintaining it as JSX would be tedious.
+So far, every page in this project has its content written directly in TypeScript — as strings passed to components as props, or as JSX elements. That works fine for short, stable text. But a CV is different: it is long, structured, and changes. Writing and maintaining it as JSX would be tedious.
 
-This is where **MDX** comes in. MDX is a file format that lets you write content in plain **Markdown**, meaning in the same lightweight syntax used in README files and documentation. The difference is that MDX also understands JSX, so you can embed React components wherever you need them. This means your content stays readable and easy to edit, while React components handle the structure wherever you need it.
+This is where **MDX** comes in. MDX is a file format that lets you write content in plain **Markdown** (and we like markdown 😉), meaning in the same lightweight syntax used in README files and documentation in the industry and for homework submissions in CTech. The difference to plan markdown is that MDX also understands JSX, so you can embed React components wherever you need them. This means your content stays readable and easy to edit, while React components handle the structure wherever you need it.
 
 A `.mdx` file might look like this:
 
@@ -82,7 +82,9 @@ What each does:
 
 #### 9.1.1 Configuring next.config.ts
 
-We need to tell Next.js that .mdx files should be treated as pages/components. While we're editing the config file, we'll also set output: "export", which tells Next.js to generate plain HTML/CSS/JS files that can be hosted without a server. The two settings are unrelated; it's just convenient to add both at once.
+We need to tell Next.js that .mdx files should be treated as pages/components. While we're editing the config file, we'll also set output: "export", which tells Next.js to generate plain HTML/CSS/JS files that can be hosted without a server. The two settings are unrelated, it's just convenient to add both at once.
+
+To following file is a config file that I also only have copied from the official documentation. There no need for in-depth mental processing as this file will look exactly the same for each project with this stack. The same applies to section 9.1.2, 9.1.3. 9.1.4.
 
 **`next.config.ts`**:
 ```ts
@@ -127,6 +129,7 @@ export default withMDX(nextConfig);
 
 Next.js requires a file named `mdx-components.tsx` at the project root when using `@next/mdx`. It lets you override how MDX renders standard Markdown elements (headings, paragraphs, links, etc.). For now we leave everything as default.
 
+
 **`mdx-components.tsx`**:
 ```tsx
 import type { MDXComponents } from 'mdx/types';
@@ -166,16 +169,16 @@ declare module "*.mdx" {
 ```
 
 * `.d.ts` is the extension for a TypeScript declaration file and TypeScript recognizes this extension specifically and knows the file contains only type information. 
-    * The tsconfig.json in the project has an include field (or defaults) that tells TypeScript which files to scan.
-* mdx.d.ts — the mdx prefix is just a human-readable name, it has no special meaning to TypeScript. 
+    * The `tsconfig.json` in the project has an include field (or defaults) that tells TypeScript which files to scan.
+* `mdx.d.ts` — the mdx prefix is just a human-readable name, it has no special meaning to TypeScript. 
 
 Without this file, TypeScript would show a red error on every MDX import.
 
 #### 9.1.4 Typography Plugin
 
-`@tailwindcss/typography` is an official Tailwind plugin that adds a single prose class. Apply prose to a container and it automatically styles all HTML elements inside it, e.g., headings get sizes, paragraphs get spacing, lists get bullets, links get underlines, and so on.
+`@tailwindcss/typography` is an official Tailwind plugin that adds a single `prose` class. Apply prose to a container and it automatically styles all HTML elements inside it, e.g., headings get sizes, paragraphs get spacing, lists get bullets, links get underlines, and so on.
 
-Normally with Tailwind you add utility classes directly to your JSX, like <h2 className="text-xl font-bold">. That works when you write the JSX yourself. But MDX compiles Markdown into HTML automatically, you never write those <h2> or <ul> tags directly, so there's nowhere to attach Tailwind classes. However at the same time, Tailwind injects its own CSS reset that overrides and neutralizes the browser defaults, so they no longer have any visible effect. By default also, from our MDX compiled HTML, which would render completely unstyled. Wrapping the MDX output in a prose container fixes this as it restyles all the generated HTML elements by tag name, without you needing to touch each one individually.
+Normally with Tailwind you add utility classes directly to your JSX, like <h2 className="text-xl font-bold">. That works when you write the JSX yourself. But MDX compiles Markdown into HTML automatically, you never write those <h2> or <ul> tags directly, so there's nowhere to attach Tailwind classes. However at the same time, Tailwind injects its own CSS reset that overrides and neutralizes the browser defaults, so they no longer have any visible effect. By default also, from our MDX compiled HTML would render completely unstyled. Wrapping the MDX output in a prose container fixes this as it restyles all the generated HTML elements by tag name, without you needing to touch each one individually.
 
 
 Install it:
@@ -234,8 +237,7 @@ export const metadata = { title: "Vita" }
 ```
 
 A few things to notice:
-* `export const metadata` at the top is JavaScript, not Markdown. MDX allows both in the same file!
-* The `---` is a Markdown horizontal rule
+* `export const metadata` at the top is JavaScript, not Markdown. MDX allows both in the same file! We will later make use of the metadata.
 * The `<table>` block is raw HTML. You can drop plain HTML anywhere in an .mdx file and it passes through as-is to the browser.
 
 
@@ -280,12 +282,14 @@ export const metadata = { title: "Publications" }
 ---
 ### 9.3 The Accordion
 
+In the following we build several files step by step for better understanding instead of dumping the whole code at once.
+
 
 #### 9.3.1 The AccordionEntry Skeleton
 
 We present all biographical details in an accordion, which is a list of collapsible sections. Clicking a header expands that section's content and closes whichever section was open before, so only one is visible at a time.
 
-Technically, we create an `AccordionAbout` parent component that manages the open/closed state, and an `AccordionEntry` component that renders a single collapsible section. `AccordionAbout` maps over a sections array to produce one `AccordionEntry` per MDX file. `AccordionEntry` is a controlled component — it does not manage its own open/closed state. Instead, the parent owns the state and passes down which index is currently open. `AccordionEntry` only receives that value and reports back when the user clicks.
+Technically, we create an `AccordionAbout` parent component that manages the open/closed state, and an `AccordionEntry` component that renders a single collapsible section. `AccordionAbout` maps over a sections array to produce one `AccordionEntry` per MDX file. `AccordionEntry` is a controlled component and it does not manage its own open/closed state. Instead, the parent owns the state and passes down which index is currently open. `AccordionEntry` only receives that value and reports back when the user clicks.
 
 Start by creating the file with the type definition and an empty component body.  
 
@@ -383,7 +387,7 @@ export default AccordionEntry;
 
 #### 9.3.3 AccordionAbout Skeleton
 
-`AccordionAbout` is the parent that owns the open/closed state and renders one `AccordionEntry` per MDX file. Start by setting up the imports and the `sections` data array.
+`AccordionAbout` is the parent that owns the open/closed state and renders one `AccordionEntry` per MDX file. Start by setting up the imports and the `sections` data array with placeholder data.
 
 **`app/components/AccordionAbout.tsx`**:
 ```tsx
@@ -431,18 +435,19 @@ const AccordionAbout = () => {
 export default AccordionAbout;
 ```
 
-`data.map(...)` iterates over the data array and returns one `<AccordionEntry>` for each item. The result is an array of JSX elements that React renders as siblings. Breaking down the individual parts:
-`({ title, content }, index)`
-* The callback receives two arguments: the current array item and its position number. The item is destructured immediately — instead of writing item.title and item.content, you unpack both into named variables in the function signature.
+`data.map(...)` iterates over the data array and returns one `<AccordionEntry>` for each item. The result is an array of JSX elements that React renders as siblings. Breaking down the individual parts:  
 
-`index`
+`({ title, content }, ...)` 
+* The callback receives two arguments: the current array item and its position number. The item is destructured immediately: instead of writing `item.title` and `item.content`, you unpack both into named variables in the function signature.
+
+`index`  
 * The position of the current item in the array (0, 1, 2, …). It is used in three places:
 * key={index} — required by React to track each item in the list efficiently when re-rendering
     * `index={index}` — tells AccordionEntry its own position
     * `openIndex={openIndex}` — the entry compares its index against openIndex to decide whether it is open
 
 `=> (...)`
-* Parentheses instead of curly braces mean the arrow function implicitly returns whatever is inside — no return keyword needed. In this case this is an AccordionEntry.
+* Parentheses instead of curly braces mean the arrow function implicitly returns whatever is inside, no return keyword needed. In this case this is an AccordionEntry.
 
 `<AccordionEntry ...> <p>{content}</p> </AccordionEntry>`
 * The JSX placed between the opening and closing tags becomes the children prop inside AccordionEntry, which renders it as the collapsible content.
@@ -488,7 +493,9 @@ You should have two accordion entries with the temporary data now.
 
 #### 9.3.5 Load MDX data into AccordionAbout
 
-The accordion works with placeholder data. Now we replace it with real MDX content. Three things change in `AccordionAbout.tsx`:
+The accordion works with placeholder data. Now we replace it with real MDX content.
+
+Three things change in `AccordionAbout.tsx`:
 
 1. The placeholder `sections` array is replaced with imports from the four `.mdx` files.
 2. The `sections` type changes from `{ title: string; content: string }` to `{ title: string; Component: ComponentType }` — each entry now holds a React component rather than a plain string.
